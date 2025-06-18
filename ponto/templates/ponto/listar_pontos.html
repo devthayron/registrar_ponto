@@ -1,67 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head><title>Lista de Pontos</title></head>
+<head>
+  <title>Lista de Pontos</title>
+</head>
 <body>
   <h2>Consultar Registros</h2>
-  <p><a href="{% url 'registrar_ponto' %}">Registrar ponto</a> | <a href="{% url 'logout' %}">Sair</a></p>
+  <p>
+    <a href="{% url 'registrar_ponto' %}">Registrar ponto</a> | 
+    <a href="{% url 'logout' %}">Sair</a>
+  </p>
 
-  <form method="get" autocomplete="off">
-    <label>CPF:</label>
-    <input type="text" name="cpf" maxlength="11" minlength="11" required pattern="\d{11}" value="{{ cpf|default:'' }}" autofocus>
+    <form method="get" autocomplete="off">
+    <label for="cpf">Filtrar por CPF:</label>
+    <select name="cpf" id="cpf">
+        <option value="">Todos</option>
+        {% for cpf_opcao in cpfs_unicos %}
+        <option value="{{ cpf_opcao }}" {% if cpf_opcao == cpf %}selected{% endif %}>{{ cpf_opcao }}</option>
+        {% endfor %}
+    </select>
     <button type="submit">Buscar</button>
-  </form>
+    <a href="{% url 'listar_pontos' %}">Limpar</a>
+    </form>
+
 
   {% if registros %}
     {% if cpf %}
-    <h3>Registros para CPF {{ cpf }}</h3>
+      <h3>Registros para CPF {{ cpf }}</h3>
     {% else %}
-    <h3>Todos os registros</h3>
+      <h3>Todos os registros</h3>
     {% endif %}
 
     <table border="1" cellpadding="5" cellspacing="0">
-      <tr>
-        <th>CPF</th>
-        <th>Data</th>
-        <th>Entrada</th>
-        <th>Saída Almoço</th>
-        <th>Volta Almoço</th>
-        <th>Saída</th>
-      </tr>
-      {% for r in registros %}
-      <tr>
-  <td>{{ r.cpf }}</td>
-  <td>{{ r.data }}</td>
-  <td>
-    {% if r.entrada %}
-      {{ r.entrada|time:"H:i" }}
-    {% else %}
-      -
-    {% endif %}
-  </td>
-  <td>
-    {% if r.saida_almoco %}
-      {{ r.saida_almoco|time:"H:i" }}
-    {% else %}
-      -
-    {% endif %}
-  </td>
-  <td>
-    {% if r.volta_almoco %}
-      {{ r.volta_almoco|time:"H:i" }}
-    {% else %}
-      -
-    {% endif %}
-  </td>
-  <td>
-    {% if r.saida %}
-      {{ r.saida|time:"H:i" }}
-    {% else %}
-      -
-    {% endif %}
-  </td>
-</tr>
-      {% endfor %}
+      <thead>
+        <tr>
+          <th>CPF</th>
+          <th>Data</th>
+          <th>Entrada</th>
+          <th>Saída Almoço</th>
+          <th>Volta Almoço</th>
+          <th>Saída</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in registros %}
+          <tr>
+            <td>{{ r.cpf }}</td>
+            <td>{{ r.data|date:"d/m/Y" }}</td>
+
+            <td>
+              {% if r.entrada %}
+                {{ r.entrada|time:"H:i" }}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+
+            <td>
+              {% if r.saida_almoco %}
+                {{ r.saida_almoco|time:"H:i" }}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+
+            <td>
+              {% if r.volta_almoco %}
+                {{ r.volta_almoco|time:"H:i" }}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+
+            <td>
+              {% if r.saida %}
+                {{ r.saida|time:"H:i" }}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
+
+    <!-- Paginação -->
+    <div>
+      {% if page_obj.has_other_pages %}
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}&cpf={{ cpf }}">&laquo; Anterior</a>
+        {% else %}
+          <span>&laquo; Anterior</span>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <strong>{{ num }}</strong>
+          {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+            <a href="?page={{ num }}&cpf={{ cpf }}">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}&cpf={{ cpf }}">Próximo &raquo;</a>
+        {% else %}
+          <span>Próximo &raquo;</span>
+        {% endif %}
+      {% endif %}
+    </div>
+
   {% elif cpf %}
     <p>Nenhum registro encontrado para este CPF.</p>
   {% endif %}

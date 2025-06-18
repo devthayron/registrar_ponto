@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Registrar Ponto</title></head>
+<body>
+  <h2>Registrar Ponto</h2>
+  <p><a href="{% url 'listar_pontos' %}">Ver registros</a> | <a href="{% url 'logout' %}">Sair</a></p>
+
+  {% if messages %}
+    {% for msg in messages %}
+      <p style="color: {% if msg.tags == 'error' %}red{% else %}green{% endif %};">{{ msg }}</p>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" autocomplete="off">
+    {% csrf_token %}
+    <label>CPF (somente números):</label>
+    <input type="text" name="cpf" maxlength="11" minlength="11" required pattern="\d{11}" autofocus>
+    <button type="submit">Registrar próximo horário</button>
+  </form>
+</body>
+</html>

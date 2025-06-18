@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lista de Pontos</title></head>
+<body>
+  <h2>Consultar Registros</h2>
+  <p><a href="{% url 'registrar_ponto' %}">Registrar ponto</a> | <a href="{% url 'logout' %}">Sair</a></p>
+
+  <form method="get" autocomplete="off">
+    <label>CPF:</label>
+    <input type="text" name="cpf" maxlength="11" minlength="11" required pattern="\d{11}" value="{{ cpf|default:'' }}" autofocus>
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if registros %}
+    {% if cpf %}
+    <h3>Registros para CPF {{ cpf }}</h3>
+    {% else %}
+    <h3>Todos os registros</h3>
+    {% endif %}
+
+    <table border="1" cellpadding="5" cellspacing="0">
+      <tr>
+        <th>CPF</th>
+        <th>Data</th>
+        <th>Entrada</th>
+        <th>Saída Almoço</th>
+        <th>Volta Almoço</th>
+        <th>Saída</th>
+      </tr>
+      {% for r in registros %}
+      <tr>
+  <td>{{ r.cpf }}</td>
+  <td>{{ r.data }}</td>
+  <td>
+    {% if r.entrada %}
+      {{ r.entrada|time:"H:i" }}
+    {% else %}
+      -
+    {% endif %}
+  </td>
+  <td>
+    {% if r.saida_almoco %}
+      {{ r.saida_almoco|time:"H:i" }}
+    {% else %}
+      -
+    {% endif %}
+  </td>
+  <td>
+    {% if r.volta_almoco %}
+      {{ r.volta_almoco|time:"H:i" }}
+    {% else %}
+      -
+    {% endif %}
+  </td>
+  <td>
+    {% if r.saida %}
+      {{ r.saida|time:"H:i" }}
+    {% else %}
+      -
+    {% endif %}
+  </td>
+</tr>
+      {% endfor %}
+    </table>
+  {% elif cpf %}
+    <p>Nenhum registro encontrado para este CPF.</p>
+  {% endif %}
+</body>
+</html>

@@ -1,21 +1,95 @@
-<!DOCTYPE html>
-<html>
-<head><title>Registrar Ponto</title></head>
-<body>
-  <h2>Registrar Ponto</h2>
-  <p><a href="{% url 'listar_pontos' %}">Ver registros</a> | <a href="{% url 'logout' %}">Sair</a></p>
+{% extends "base.html" %}
 
-  {% if messages %}
-    {% for msg in messages %}
-      <p style="color: {% if msg.tags == 'error' %}red{% else %}green{% endif %};">{{ msg }}</p>
-    {% endfor %}
-  {% endif %}
+{% block title %}Registro de Ponto{% endblock %}
 
-  <form method="post" autocomplete="off">
+{% block content %}
+<div class="ponto-container">
+
+  <header class="topo">
+    <img src="https://institucional.armazemparaiba.com.br/public/img/LOGO_PARAIBA_02.png"
+         alt="Logo do Sistema"
+         class="logo" />
+    <h1>Registro de Ponto</h1>
+    <div class="relogio" id="relogio"></div>
+  </header>
+
+  <form method="post" class="ponto-form" id="pontoForm" autocomplete="off">
     {% csrf_token %}
-    <label>CPF (somente números):</label>
-    <input type="text" name="cpf" maxlength="11" minlength="11" required pattern="\d{11}" autofocus>
+    <label for="cpf">Digite seu CPF (somente números)</label>
+    <input type="text"
+           id="cpf"
+           name="cpf"
+           maxlength="14"
+           minlength="14"
+           required
+           pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+           placeholder="000.000.000-00"
+           autofocus />
+
     <button type="submit">Registrar próximo horário</button>
+
+    <div class="mensagem" id="mensagem">
+      {% if messages %}
+        <div class="messages">
+          {% for msg in messages %}
+            <p style="color: {% if msg.tags == 'error' %}red{% else %}green{% endif %};">
+              {{ msg }}
+            </p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
   </form>
-</body>
-</html>
+
+  {# Link de navegação opcional #}
+  {% comment %}
+  <nav>
+    <a href="{% url 'listar_pontos' %}">Ver registros</a> |
+    <a href="{% url 'logout' %}">Sair</a>
+  </nav>
+  {% endcomment %}
+
+</div>
+
+<script>
+  const cpfInput = document.getElementById('cpf');
+  const pontoForm = document.getElementById('pontoForm');
+
+  cpfInput.addEventListener('input', function (e) {
+    let value = e.target.value;
+
+    // Remove tudo que não for número
+    value = value.replace(/\D/g, '');
+
+    // Limita a 11 dígitos
+    value = value.substring(0, 11);
+
+    // Aplica máscara
+    if (value.length > 9) {
+      value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/, '$1.$2.$3-$4');
+    } else if (value.length > 6) {
+      value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, '$1.$2.$3');
+    } else if (value.length > 3) {
+      value = value.replace(/^(\d{3})(\d{0,3}).*/, '$1.$2');
+    }
+
+    e.target.value = value;
+
+    // Envia automaticamente ao completar CPF (com máscara)
+    if (value.length === 14) {
+      pontoForm.submit();
+    }
+  });
+
+  // Oculta mensagens após 1 segundo
+  window.addEventListener('DOMContentLoaded', function () {
+    const mensagem = document.getElementById('mensagem');
+    if (mensagem && mensagem.innerText.trim() !== '') {
+      setTimeout(() => {
+        mensagem.style.display = 'none';
+      }, 1000);
+    }
+  });
+</script>
+
+{% endblock %}

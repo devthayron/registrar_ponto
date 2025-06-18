@@ -1,27 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Lista de Pontos</title>
-</head>
-<body>
-  <h2>Consultar Registros</h2>
-  <p>
-    <a href="{% url 'registrar_ponto' %}">Registrar ponto</a> | 
-    <a href="{% url 'logout' %}">Sair</a>
-  </p>
+{% extends "base.html" %}
+{% block title %}Consultar Registros{% endblock %}
 
-    <form method="get" autocomplete="off">
-    <label for="cpf">Filtrar por CPF:</label>
-    <select name="cpf" id="cpf">
-        <option value="">Todos</option>
-        {% for cpf_opcao in cpfs_unicos %}
-        <option value="{{ cpf_opcao }}" {% if cpf_opcao == cpf %}selected{% endif %}>{{ cpf_opcao }}</option>
-        {% endfor %}
-    </select>
+{% block content %}
+
+<div class="gerente-container">
+  <h2>Consultar Registros</h2>
+
+  <form method="get" autocomplete="off">
+    <label for="cpf">Consultar por CPF:</label>
+    <input
+      type="text"
+      name="cpf"
+      id="cpf"
+      value="{{ cpf|default:'' }}"
+      placeholder="Digite o CPF"
+      maxlength="14"
+      pattern="(\d{11}|(\d{3}\.\d{3}\.\d{3}-\d{2}))"
+      inputmode="numeric"
+      oninput="this.value = this.value.replace(/[^0-9.-]/g, '').slice(0,14);"
+    />
+
     <button type="submit">Buscar</button>
     <a href="{% url 'listar_pontos' %}">Limpar</a>
-    </form>
-
+  </form>
 
   {% if registros %}
     {% if cpf %}
@@ -30,86 +31,75 @@
       <h3>Todos os registros</h3>
     {% endif %}
 
-    <table border="1" cellpadding="5" cellspacing="0">
+    <table>
       <thead>
         <tr>
           <th>CPF</th>
+          <th>Nome</th>
           <th>Data</th>
           <th>Entrada</th>
           <th>Saída Almoço</th>
           <th>Volta Almoço</th>
           <th>Saída</th>
+          <th>Líder (no registro)</th>
         </tr>
       </thead>
       <tbody>
         {% for r in registros %}
-          <tr>
-            <td>{{ r.cpf }}</td>
-            <td>{{ r.data|date:"d/m/Y" }}</td>
-
-            <td>
-              {% if r.entrada %}
-                {{ r.entrada|time:"H:i" }}
-              {% else %}
-                -
-              {% endif %}
-            </td>
-
-            <td>
-              {% if r.saida_almoco %}
-                {{ r.saida_almoco|time:"H:i" }}
-              {% else %}
-                -
-              {% endif %}
-            </td>
-
-            <td>
-              {% if r.volta_almoco %}
-                {{ r.volta_almoco|time:"H:i" }}
-              {% else %}
-                -
-              {% endif %}
-            </td>
-
-            <td>
-              {% if r.saida %}
-                {{ r.saida|time:"H:i" }}
-              {% else %}
-                -
-              {% endif %}
-            </td>
-          </tr>
+        <tr>
+          <td>
+            {% if r.colaborador and r.colaborador.cpf %}
+              {{ r.colaborador.cpf|slice:":3" }}.{{ r.colaborador.cpf|slice:"3:6" }}.{{ r.colaborador.cpf|slice:"6:9"}}-{{ r.colaborador.cpf|slice:"9:11" }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>{{ r.colaborador.nome|default:"-" }}</td>
+          <td>{{ r.data|date:"d/m/Y" }}</td>
+          <td>{% if r.entrada %}{{ r.entrada|time:"H:i" }}{% else %}-{% endif %}</td>
+          <td>{% if r.saida_almoco %}{{ r.saida_almoco|time:"H:i" }}{% else %}-{% endif %}</td>
+          <td>{% if r.volta_almoco %}{{ r.volta_almoco|time:"H:i" }}{% else %}-{% endif %}</td>
+          <td>{% if r.saida %}{{ r.saida|time:"H:i" }}{% else %}-{% endif %}</td>
+          <td>{{ r.lider_nome|default:"-" }}</td>
+        </tr>
         {% endfor %}
       </tbody>
     </table>
 
-    <!-- Paginação -->
-    <div>
-      {% if page_obj.has_other_pages %}
-        {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}&cpf={{ cpf }}">&laquo; Anterior</a>
-        {% else %}
-          <span>&laquo; Anterior</span>
-        {% endif %}
-
-        {% for num in page_obj.paginator.page_range %}
-          {% if page_obj.number == num %}
-            <strong>{{ num }}</strong>
-          {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
-            <a href="?page={{ num }}&cpf={{ cpf }}">{{ num }}</a>
-          {% endif %}
-        {% endfor %}
-
-        {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}&cpf={{ cpf }}">Próximo &raquo;</a>
-        {% else %}
-          <span>Próximo &raquo;</span>
-        {% endif %}
-      {% endif %}
-    </div>
-
+    {% include 'paginacao.html' %}
   {% elif cpf %}
-    <p>Nenhum registro encontrado para este CPF.</p>
+    <p>Nenhum registro encontrado para o CPF {{ cpf }}.</p>
+  {% else %}
+    <p>Nenhum registro encontrado.</p>
   {% endif %}
-</body>
-</html>
+
+  <script>
+    const cpfBusca = document.getElementById("cpf");
+
+    cpfBusca.addEventListener("input", function (e) {
+      let value = e.target.value;
+
+      // Remove tudo que não for número
+      value = value.replace(/\D/g, "");
+
+      // Limita a 11 caracteres
+      value = value.substring(0, 11);
+
+      // Aplica a máscara do CPF: 000.000.000-00
+      if (value.length > 9) {
+        value = value.replace(
+          /^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/,
+          "$1.$2.$3-$4"
+        );
+      } else if (value.length > 6) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, "$1.$2.$3");
+      } else if (value.length > 3) {
+        value = value.replace(/^(\d{3})(\d{0,3}).*/, "$1.$2");
+      }
+
+      e.target.value = value;
+    });
+  </script>
+</div>
+
+{% endblock %}

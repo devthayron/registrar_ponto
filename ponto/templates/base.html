@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema de Registro de Pontos{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!-- 
+<header>
+    <h1>Sistema de Registro de Pontos</h1>
+    <nav>
+        <a href="{% url 'registrar_ponto' %}">Registrar ponto</a> |
+        <a href="{% url 'listar_pontos' %}">Listar pontos</a> |
+        <a href="{% url 'logout' %}">Sair</a>
+    </nav>
+</header> -->
+
+<main class="Centro">
+    {% block content %}
+
+    {% endblock %}
+</main>
+
+<footer class="footer">
+    <strong>Front-end:</strong> Francisco Araújo | <strong>Back-end:</strong> Thayron Higlânder
+</footer>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

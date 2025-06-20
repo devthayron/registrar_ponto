@@ -3,14 +3,12 @@
 {% block title %}Login | Registro de Ponto{% endblock %}
 
 {% block content %}
-
+{% load static %}
 <div class="login-container">
     <div class="login-header">
-        <img src="https://institucional.armazemparaiba.com.br/public/img/LOGO_PARAIBA_02.png"
-              alt="Logo do Sistema"
-              class="logo" />
+        <img src="{% static 'img/logo-tdc.svg' %}" alt="Logo do Sistema" class="logo" />
 
-        <h1>Registro de Ponto</h1>
+        <h1>Controle de Registro</h1>
     </div>
 
     {% if messages %}

@@ -2,27 +2,38 @@
 {% block title %}Consultar Registros{% endblock %}
 
 {% block content %}
-
+{% load static %}
 <div class="gerente-container">
   <h2>Consultar Registros</h2>
 
-  <form method="get" autocomplete="off">
-    <label for="cpf">Consultar por CPF:</label>
-    <input
-      type="text"
-      name="cpf"
-      id="cpf"
-      value="{{ cpf|default:'' }}"
-      placeholder="Digite o CPF"
-      maxlength="14"
-      pattern="(\d{11}|(\d{3}\.\d{3}\.\d{3}-\d{2}))"
-      inputmode="numeric"
-      oninput="this.value = this.value.replace(/[^0-9.-]/g, '').slice(0,14);"
-    />
+<form method="get" autocomplete="off">
+  <label for="cpf">CPF:</label>
+  <input
+    type="text"
+    name="cpf"
+    id="cpf"
+    value="{{ cpf|default:'' }}"
+    placeholder="Digite o CPF"
+    maxlength="14"
+    pattern="(\d{11}|(\d{3}\.\d{3}\.\d{3}-\d{2}))"
+    inputmode="numeric"
+    oninput="this.value = this.value.replace(/[^0-9.-]/g, '').slice(0,14);"
+  />
 
-    <button type="submit">Buscar</button>
-    <a href="{% url 'listar_pontos' %}">Limpar</a>
-  </form>
+  <label for="lider">Conferente:</label>
+  <select name="lider" id="lider" class="dropdown">
+    <option value="" {% if not lider %}selected{% endif %}>Selecionar conferente</option>
+    {% for l in lideres %}
+      <option value="{{ l.id }}" {% if l.id|stringformat:"s" == lider %}selected{% endif %}>{{ l.nome }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Buscar</button>
+  <a href="{% url 'listar_pontos' %}">Limpar</a>
+  <a href="{% url 'baixar_historico_geral_pdf' %}" class="btn btn-primary">Baixar Histórico Geral (PDF)</a>
+</form>
+
+
 
   {% if registros %}
     {% if cpf %}
@@ -38,8 +49,6 @@
           <th>Nome</th>
           <th>Data</th>
           <th>Entrada</th>
-          <th>Saída Almoço</th>
-          <th>Volta Almoço</th>
           <th>Saída</th>
           <th>Líder (no registro)</th>
         </tr>
@@ -57,8 +66,6 @@
           <td>{{ r.colaborador.nome|default:"-" }}</td>
           <td>{{ r.data|date:"d/m/Y" }}</td>
           <td>{% if r.entrada %}{{ r.entrada|time:"H:i" }}{% else %}-{% endif %}</td>
-          <td>{% if r.saida_almoco %}{{ r.saida_almoco|time:"H:i" }}{% else %}-{% endif %}</td>
-          <td>{% if r.volta_almoco %}{{ r.volta_almoco|time:"H:i" }}{% else %}-{% endif %}</td>
           <td>{% if r.saida %}{{ r.saida|time:"H:i" }}{% else %}-{% endif %}</td>
           <td>{{ r.lider_nome|default:"-" }}</td>
         </tr>

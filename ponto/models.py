@@ -9,7 +9,7 @@ class UsuarioPersonalizado(AbstractUser):
     nivel = models.CharField(max_length=10, choices=NIVEIS, default='usuario')
 
     def __str__(self):
-        return self.username  # ou outro campo que identifique o usuário
+        return self.username  
 
 
 class Lider(models.Model):

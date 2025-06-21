@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+venv/
+env/
+.venv/
+.env/
+
+# Arquivos de configuração local
+*.env
+*.env.*
+
+# Django
+*.sqlite3
+db.sqlite3
+/staticfiles/
+media/
+
+# Arquivos de log
+*.log
+
+# Editor / IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos do sistema (Windows, macOS, Linux)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Byte-compiled / cache
+*.pyc
+
+# Cache do pytest, cobertura de testes
+.cache/
+.coverage
+htmlcov/
+
+# Outros
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/

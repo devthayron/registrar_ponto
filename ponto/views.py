@@ -8,6 +8,10 @@ from .models import RegistroPonto, Colaborador, Lider
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 from xhtml2pdf import pisa
+from datetime import datetime
+from openpyxl.styles import Font, Alignment
+from openpyxl import Workbook
+
 
 # ------------------  Usuário  ------------------
 User = get_user_model()
@@ -15,6 +19,54 @@ User = get_user_model()
 # ------------------  Gerente  ------------------
 def is_gerente(user):
     return user.nivel == 'gerente'
+
+# ------------------  Excel  ------------------
+
+@login_required
+def baixar_historico_geral_excel(request):
+    # Query com registros ordenados como no PDF
+    registros = RegistroPonto.objects.select_related('colaborador').order_by('colaborador__nome', 'data')
+
+    # Cria workbook e planilha
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Histórico Geral"
+
+    # Cabeçalhos
+    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Saída', 'Líder (no registro)']
+    header_font = Font(bold=True)
+    alignment = Alignment(horizontal='center')
+
+    for col_num, header in enumerate(headers, 1):
+        cell = ws.cell(row=1, column=col_num, value=header)
+        cell.font = header_font
+        cell.alignment = alignment
+
+    # Preenche as linhas
+    for row_num, registro in enumerate(registros, start=2):
+        ws.cell(row=row_num, column=1, value=registro.colaborador.cpf)
+        ws.cell(row=row_num, column=2, value=registro.colaborador.nome)
+        ws.cell(row=row_num, column=3, value=registro.data.strftime('%d/%m/%Y') if registro.data else '')
+        ws.cell(row=row_num, column=4, value=registro.entrada.strftime('%H:%M') if registro.entrada else '---')
+        ws.cell(row=row_num, column=5, value=registro.saida.strftime('%H:%M') if registro.saida else '---')
+        ws.cell(row=row_num, column=6, value=registro.lider_nome if hasattr(registro, 'lider_nome') else '')
+
+    # Ajusta largura das colunas para melhorar visualização
+    for col in ws.columns:
+        max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
+        adjusted_width = max_length + 2
+        ws.column_dimensions[col[0].column_letter].width = adjusted_width
+
+    # Prepara resposta para download do Excel
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    )
+    filename = f"historico_geral.xlsx"
+    response['Content-Disposition'] = f'attachment; filename={filename}'
+
+    wb.save(response)
+    return response
+
 
 # ------------------  PDF  ------------------
 @login_required
@@ -45,9 +97,9 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.nivel == 'gerente':
-                return redirect('listar_pontos')  # Redireciona gerente para a listagem
+                return redirect('listar_pontos')  
             else:
-                return redirect('registrar_ponto')  # Redireciona usuário normal para registrar ponto
+                return redirect('registrar_ponto')  
         else:
             messages.error(request, 'Usuário ou senha incorretos.')
 
@@ -60,6 +112,7 @@ def logout_view(request):
     return redirect('login')
 
 
+# ------------------  Registro  ------------------
 @login_required
 def registrar_ponto(request):
     if request.method == 'POST':
@@ -103,6 +156,7 @@ def registrar_ponto(request):
     return render(request, 'ponto/registrar_ponto.html')
 
 
+# ------------------  Listagem  ------------------
 @login_required
 def listar_pontos(request):
     

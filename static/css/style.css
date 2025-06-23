@@ -22,6 +22,12 @@ main {
   background-color: #aeb6bb;
 }
 
+h3 img {
+  vertical-align: middle;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
 /* Login */
 .login-container {
   width: 100%;
@@ -274,7 +280,7 @@ header h1 {
 
 .btn.primary:hover {
   background-color: #1f6391;
-}
+} 
 
 .btn.secondary {
   background-color: #bdc3c7;

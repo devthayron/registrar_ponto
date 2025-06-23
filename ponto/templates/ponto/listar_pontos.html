@@ -31,9 +31,9 @@
   <button type="submit">Buscar</button>
   <a href="{% url 'listar_pontos' %}">Limpar</a>
 
-  <a href="{% url 'baixar_historico_geral_pdf' %}" class="btn btn-primary">(PDF)</a>
+  <!-- <a href="{% url 'baixar_historico_geral_pdf' %}" class="btn btn-primary">(PDF)</a>
   
-  <a href="{% url 'baixar_historico_geral_excel' %}" class="btn btn-success">(Excel)</a>
+  <a href="{% url 'baixar_historico_geral_excel' %}" class="btn btn-success">(Excel)</a> -->
 </form>
   
 
@@ -42,8 +42,19 @@
     {% if cpf %}
       <h3>Registros para CPF {{ cpf }}</h3>
     {% else %}
-      <h3>Todos os registros</h3>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <h3 style="margin: 0;">Todos os registros</h3>
+        
+        <a href="{% url 'baixar_historico_geral_pdf' %}" title="Baixar PDF">
+          <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
+        </a>
+
+        <a href="{% url 'baixar_historico_geral_excel' %}" title="Baixar Excel">
+          <img src="{% static 'img/excel-icon.jpg' %}" alt="Excel" style="height: 32px;">
+        </a>
+      </div>
     {% endif %}
+
 
     <table>
       <thead>

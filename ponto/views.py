@@ -33,7 +33,7 @@ def baixar_historico_geral_excel(request):
     ws.title = "Histórico Geral"
 
     # Cabeçalhos
-    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Saída', 'Líder (no registro)']
+    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Saída', 'Conferente']
     header_font = Font(bold=True)
     alignment = Alignment(horizontal='center')
 
@@ -44,12 +44,15 @@ def baixar_historico_geral_excel(request):
 
     # Preenche as linhas
     for row_num, registro in enumerate(registros, start=2):
+        entrada_formatada = timezone.localtime(registro.entrada).strftime('%H:%M') if registro.entrada else '---'
+        saida_formatada = timezone.localtime(registro.saida).strftime('%H:%M') if registro.saida else '---'
+
         ws.cell(row=row_num, column=1, value=registro.colaborador.cpf)
         ws.cell(row=row_num, column=2, value=registro.colaborador.nome)
         ws.cell(row=row_num, column=3, value=registro.data.strftime('%d/%m/%Y') if registro.data else '')
-        ws.cell(row=row_num, column=4, value=registro.entrada.strftime('%H:%M') if registro.entrada else '---')
-        ws.cell(row=row_num, column=5, value=registro.saida.strftime('%H:%M') if registro.saida else '---')
-        ws.cell(row=row_num, column=6, value=registro.lider_nome if hasattr(registro, 'lider_nome') else '')
+        ws.cell(row=row_num, column=4, value=entrada_formatada)
+        ws.cell(row=row_num, column=5, value=saida_formatada)
+        ws.cell(row=row_num, column=6, value=getattr(registro, 'lider_nome', ''))
 
     # Ajusta largura das colunas para melhorar visualização
     for col in ws.columns:

@@ -11,7 +11,7 @@ from xhtml2pdf import pisa
 from datetime import datetime
 from openpyxl.styles import Font, Alignment
 from openpyxl import Workbook
-
+from datetime import timedelta
 
 # ------------------  Usuário  ------------------
 User = get_user_model()
@@ -115,7 +115,7 @@ def logout_view(request):
     return redirect('login')
 
 
-# ------------------  Registro  ------------------
+# ------------------ Registro ------------------
 @login_required
 def registrar_ponto(request):
     if request.method == 'POST':
@@ -140,13 +140,23 @@ def registrar_ponto(request):
                 data=hoje
             )
 
+            # Se entrada e saída já existem, não deixa registrar de novo
+            if registro.entrada and registro.saida:
+                messages.error(request, 'Entrada e saída já registradas para hoje.')
+                return redirect('registrar_ponto')
+
+            #  Bloqueio por tempo (apenas se ainda falta entrada ou saída)
+            intervalo = timedelta(seconds=10)
+            ultimo_horario = registro.saida or registro.entrada
+            if ultimo_horario and (agora - ultimo_horario) < intervalo:
+                messages.error(request, 'Leitura ignorada: ponto já registrado recentemente.')
+                return redirect('registrar_ponto')
+    
+            # Registrar entrada ou saída
             if not registro.entrada:
                 registro.entrada = agora
             elif not registro.saida:
                 registro.saida = agora
-            else:
-                messages.error(request, 'Entrada e saída já registradas para hoje.')
-                return redirect('registrar_ponto')
 
             registro.save()
             messages.success(request, 'Ponto registrado com sucesso!')
@@ -157,6 +167,8 @@ def registrar_ponto(request):
         return redirect('registrar_ponto')
 
     return render(request, 'ponto/registrar_ponto.html')
+
+
 
 
 # ------------------  Listagem  ------------------

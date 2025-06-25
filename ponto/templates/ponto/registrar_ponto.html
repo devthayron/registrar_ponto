@@ -29,7 +29,7 @@
       {% if messages %}
         <div class="messages">
           {% for msg in messages %}
-            <p style="color: {% if msg.tags == 'error' %}red{% else %}green{% endif %};">
+            <p class="mensagem {% if msg.tags == 'error' %}erro{% else %}sucesso{% endif %}">
               {{ msg }}
             </p>
           {% endfor %}
@@ -78,14 +78,20 @@
     }
   });
 
-  // Oculta mensagens após 1 segundo
+  // Oculta mensagens após o tempo determinado
   window.addEventListener('DOMContentLoaded', function () {
-    const mensagem = document.getElementById('mensagem');
-    if (mensagem && mensagem.innerText.trim() !== '') {
+    const mensagens = document.querySelectorAll('.messages p');
+
+    mensagens.forEach((msg) => {
+      // Verifica se a mensagem é de erro
+      const isErro = msg.classList.contains('erro');
+      const tempo = isErro ? 3000 : 1000;  // 3 segundos para erro, 1 segundo para sucesso
+
+      // Esconde a mensagem após o tempo definido
       setTimeout(() => {
-        mensagem.style.display = 'none';
-      }, 1000);
-    }
+        msg.style.display = 'none';
+      }, tempo);
+    });
   });
 </script>
 

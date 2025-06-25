@@ -3,15 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        body { font-family: Arial, sans-serif; font-size: 11px; }
-        h1 { text-align: center; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; font-size: 10px; }
-        th, td { border: 1px solid #000; padding: 5px; text-align: center; }
-        th { background-color: #f0f0f0; }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            margin-bottom: 40px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            margin-top: 40px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Histórico Geral de Registros de Ponto</h1>
+    <h1>Histórico de Registros </h1>
 
     <table>
         <thead>
@@ -29,10 +60,10 @@
             <tr>
                 <td>{{ registro.colaborador.cpf }}</td>
                 <td>{{ registro.colaborador.nome }}</td>
-                <td>{{ registro.data }}</td>
+                <td>{{ registro.data|date:"d/m/Y" }}</td>
                 <td>{{ registro.entrada|time:"H:i"|default:"---" }}</td>
                 <td>{{ registro.saida|time:"H:i"|default:"---" }}</td>
-                <td>{{ registro.lider_nome }}</td>
+                <td>{{ registro.lider_nome|default:"---" }}</td>
             </tr>
             {% empty %}
             <tr>
@@ -41,5 +72,9 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <div class="footer">
+        <p><strong>Desenvolvido por:</strong> Thayron Higlânder & Francisco Araújo.</p>
+    </div>
 </body>
 </html>

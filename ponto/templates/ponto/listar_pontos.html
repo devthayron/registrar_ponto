@@ -20,9 +20,9 @@
     oninput="this.value = this.value.replace(/[^0-9.-]/g, '').slice(0,14);"
   />
 
-  <label for="lider">Conferente:</label>
+  <label for="lider">Líderes:</label>
   <select name="lider" id="lider" class="dropdown">
-    <option value="" {% if not lider %}selected{% endif %}>Selecionar conferente</option>
+    <option value="" {% if not lider %}selected{% endif %}>Selecionar Líderes</option>
     {% for l in lideres %}
       <option value="{{ l.id }}" {% if l.id|stringformat:"s" == lider %}selected{% endif %}>{{ l.nome }}</option>
     {% endfor %}
@@ -64,7 +64,7 @@
           <th>Data</th>
           <th>Entrada</th>
           <th>Saída</th>
-          <th>Conferente</th>
+          <th>Líder</th>
         </tr>
       </thead>
       <tbody>

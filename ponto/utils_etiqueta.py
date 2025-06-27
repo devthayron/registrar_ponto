@@ -8,7 +8,7 @@ def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider ainda 
 
     etiqueta_largura = 400
     etiqueta_altura = 200
-    margem_superior = 75
+    margem_superior = 1
 
     folha = Image.new('RGB', (folha_largura, folha_altura), 'white')
     draw = ImageDraw.Draw(folha)
@@ -28,12 +28,12 @@ def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider ainda 
     centro = etiqueta_largura // 2
     x_colaborador = centro - (largura_colaborador // 2)
 
-    etiqueta_draw.text((x_colaborador, 10), texto_colaborador, font=fonte, fill='black')
+    etiqueta_draw.text((x_colaborador, 12), texto_colaborador, font=fonte, fill='black')
 
     qr = qrcode.make(dados_qr)
     qr = qr.resize((120, 120))
     x_qr = centro - (qr.width // 2)
-    etiqueta.paste(qr, (x_qr, 55))  # ajustado um pouco para a nova altura da fonte
+    etiqueta.paste(qr, (x_qr, 60))  # ajustado um pouco para a nova altura da fonte
 
     pos_x = (folha_largura - etiqueta_largura) // 2
     pos_y = margem_superior

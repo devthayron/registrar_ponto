@@ -2,12 +2,12 @@ import io
 from PIL import Image, ImageDraw, ImageFont
 import qrcode
 
-def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider será ignorado
+def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider ainda é ignorado
     folha_largura = 794
     folha_altura = 1123
 
     etiqueta_largura = 400
-    etiqueta_altura = 200  # reduzido, já que removemos o líder
+    etiqueta_altura = 200
     margem_superior = 75
 
     folha = Image.new('RGB', (folha_largura, folha_altura), 'white')
@@ -17,7 +17,7 @@ def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider será 
     etiqueta_draw = ImageDraw.Draw(etiqueta)
 
     try:
-        fonte = ImageFont.truetype("arial.ttf", 18)
+        fonte = ImageFont.truetype("arial.ttf", 17)  
     except IOError:
         fonte = ImageFont.load_default()
 
@@ -31,9 +31,9 @@ def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider será 
     etiqueta_draw.text((x_colaborador, 10), texto_colaborador, font=fonte, fill='black')
 
     qr = qrcode.make(dados_qr)
-    qr = qr.resize((150, 150))
+    qr = qr.resize((120, 120))
     x_qr = centro - (qr.width // 2)
-    etiqueta.paste(qr, (x_qr, 45))  # Aproximado ao texto
+    etiqueta.paste(qr, (x_qr, 55))  # ajustado um pouco para a nova altura da fonte
 
     pos_x = (folha_largura - etiqueta_largura) // 2
     pos_y = margem_superior

@@ -17,7 +17,7 @@ def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider ainda 
     etiqueta_draw = ImageDraw.Draw(etiqueta)
 
     try:
-        fonte = ImageFont.truetype("arial.ttf", 17)  
+        fonte = ImageFont.truetype("arial.ttf", 30)  
     except IOError:
         fonte = ImageFont.load_default()
 

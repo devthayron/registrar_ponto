@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerando Etiqueta</title>
+  <script>
+    window.onload = function() {
+      const novaAba = window.open("{{ etiqueta_url }}", "_blank");
+      setTimeout(() => {
+        window.location.href = "{{ voltar_para }}";
+      }, 500);
+    };
+  </script>
+</head>
+<body>
+  <p>Gerando etiqueta... você será redirecionado em instantes.</p>
+</body>
+</html>

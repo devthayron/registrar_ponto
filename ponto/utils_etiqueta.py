@@ -6,8 +6,8 @@ def gerar_etiqueta(nome_colaborador, nome_lider, dados_qr):  # nome_lider ainda 
     folha_largura = 794
     folha_altura = 1123
 
-    etiqueta_largura = 400
-    etiqueta_altura = 200
+    etiqueta_largura = 500
+    etiqueta_altura = 300
     margem_superior = 1
 
     folha = Image.new('RGB', (folha_largura, folha_altura), 'white')

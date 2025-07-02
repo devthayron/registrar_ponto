@@ -566,7 +566,7 @@ form {
 
 label {
   display: block;
-  margin-top: 16px;
+  margin-top: 8px;
   margin-bottom: 4px;
   font-weight: bold;
 }
@@ -632,6 +632,7 @@ label {
   }
 
   .login-header h1 {
+    margin-top: 1rem;
     font-size: 1.3rem;
   }
 
@@ -666,6 +667,11 @@ label {
     top: 36px;
     right: 16px;
     font-size: 1.2rem;
+  }
+  /* Ajusta o espaçamento entre os botões no form gerente */
+  .footer {
+    padding: 0.2rem;
+    font-size: 0.9rem;
   }
 }
 

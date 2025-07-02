@@ -571,3 +571,112 @@ label {
   font-weight: bold;
 }
 
+/* Meta tag importante para responsividade, lembre-se de adicionar no <head> do HTML */
+/* <meta name="viewport" content="width=device-width, initial-scale=1"> */
+
+/* =========================
+   Media Queries para Mobile
+   ========================= */
+@media (max-width: 600px) {
+  /* Ajusta padding e centraliza main */
+  main {
+    padding: 1rem;
+  }
+
+  /* Containers principais ficam full width com margens internas */
+  .login-container,
+  .ponto-container,
+  .gerente-container {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Formulários e inputs ficam full width */
+  .login-form,
+  .ponto-form,
+  .gerente-container form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .login-form input,
+  .ponto-form input,
+  .gerente-container form input[type="text"],
+  .gerente-container form input[type="date"],
+  .gerente-container form select,
+  .dropdown {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  /* Botões full width para facilitar clique */
+  .login-form button,
+  .ponto-form button,
+  .gerente-container form button[type="submit"],
+  .gerente-container form a {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.9rem;
+  }
+
+  /* Ajusta o header e logo */
+  .topo .logo {
+    width: 150px;
+  }
+
+  /* Ajusta texto e tamanho das fontes para melhor leitura */
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-header h1 {
+    font-size: 1.3rem;
+  }
+
+  /* Reduz o tamanho da tabela, deixa rolável */
+  table {
+    min-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  /* Para o container da tabela e tabela, garantir scroll horizontal suave */
+  .tabela-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* rolamento suave no iOS */
+  }
+
+  /* Ajusta a área de filtros para empilhar em mobile */
+  .filtros {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  /* Remove largura fixa e aumenta gap dos inputs no form gerente */
+  .gerente-container form input[type="text"],
+  .gerente-container form select,
+  .dropdown {
+    width: 100%;
+  }
+
+  /* Ícone lupa precisa ajustar para ficar visível e alinhado */
+  .search-group .icon {
+    top: 36px;
+    right: 16px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Pequena melhoria no hover para botões em mobile */
+@media (hover: none) {
+  .login-form button:hover,
+  .ponto-form button:hover,
+  .btn.primary:hover,
+  .btn.secondary:hover,
+  .gerente-container form button[type="submit"]:hover,
+  .gerente-container form a:hover {
+    background-color: inherit;
+  }
+}

@@ -2,12 +2,6 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import UsuarioPersonalizado, RegistroPonto, Colaborador, Lider
 from django.utils.translation import gettext_lazy as _
-from django.urls import path
-from django.http import HttpResponse
-from .utils_etiqueta import gerar_etiqueta
-from django.shortcuts import render
-from django.utils.html import format_html
-from django.shortcuts import redirect
 
 @admin.register(UsuarioPersonalizado)
 class UsuarioPersonalizadoAdmin(UserAdmin):
@@ -43,50 +37,19 @@ class LiderAdmin(admin.ModelAdmin):
     list_display = ('nome',)
     search_fields = ('nome',)
 
+
 @admin.register(Colaborador)
 class ColaboradorAdmin(admin.ModelAdmin):
-    list_display = ('cpf_formatado', 'nome', 'lider', 'botao_etiqueta')
+    list_display = ('cpf_formatado', 'nome', 'lider')
     search_fields = ('cpf', 'nome')
-    list_filter = ('lider',)
+    list_filter = ('lider',)  
 
     def cpf_formatado(self, obj):
         cpf = obj.cpf
+        # Formata CPF como 000.000.000-00
         return f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}'
     cpf_formatado.short_description = 'CPF'
 
-    def botao_etiqueta(self, obj):
-        return format_html(
-            '<a class="button" href="/etiqueta/{}/" target="_blank">Gerar Etiqueta</a>',
-            obj.id
-        )
-    botao_etiqueta.short_description = 'Etiqueta'
-    botao_etiqueta.allow_tags = True
-
-    def gerar_etiqueta_action(self, request, queryset):
-        if queryset.count() != 1:
-            self.message_user(request, "Selecione apenas um colaborador para gerar a etiqueta.", level='error')
-            return
-
-        colaborador = queryset.first()
-        etiqueta_url = self.get_etiqueta_url(colaborador)
-        voltar_para = request.get_full_path()
-
-        return render(request, 'ponto/abrir_etiqueta.html', {
-            'etiqueta_url': etiqueta_url,
-            'voltar_para': voltar_para,
-        })
-
-    def etiqueta_view(self, request, colaborador_id):
-        from .models import Colaborador
-
-        colaborador = Colaborador.objects.get(id=colaborador_id)
-        nome_colaborador = colaborador.nome
-        nome_lider = colaborador.lider.nome if colaborador.lider else 'Sem líder'
-        dados_qr = colaborador.cpf  # pode ser alterado para outro identificador
-
-        imagem_buffer = gerar_etiqueta(nome_colaborador, nome_lider, dados_qr)
-
-        return HttpResponse(imagem_buffer.getvalue(), content_type='image/png')
 
 @admin.register(RegistroPonto)
 class RegistroPontoAdmin(admin.ModelAdmin):

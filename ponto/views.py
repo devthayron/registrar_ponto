@@ -207,22 +207,4 @@ def listar_pontos(request):
         'lideres': lideres,
     })
 
-# ------------------ Etiqueta ------------------
-@login_required
-def etiqueta_view(request, colaborador_id):
-    from .models import Colaborador
-    from .utils_etiqueta import gerar_etiqueta
-
-    try:
-        colaborador = Colaborador.objects.get(id=colaborador_id)
-    except Colaborador.DoesNotExist:
-        return HttpResponse('Colaborador não encontrado.', status=404)
-
-    nome_colaborador = colaborador.nome
-    nome_lider = colaborador.lider.nome if colaborador.lider else 'Sem líder'
-    dados_qr = colaborador.cpf
-
-    imagem_buffer = gerar_etiqueta(nome_colaborador, nome_lider, dados_qr)
-
-    return HttpResponse(imagem_buffer.getvalue(), content_type='image/png')
 

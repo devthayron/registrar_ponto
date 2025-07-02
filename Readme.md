@@ -87,7 +87,6 @@ Este é um sistema web de **registro digital** desenvolvido com **Django**, que 
 - Botões para:
   - 📄 Exportar em PDF
   - 📊 Exportar em Excel
-  
 ---
 
 ### 📤 **Download de Relatórios (PDF e Excel)**

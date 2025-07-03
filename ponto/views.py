@@ -11,8 +11,8 @@ from xhtml2pdf import pisa
 from datetime import datetime
 from openpyxl.styles import Font, Alignment
 from openpyxl import Workbook
-from datetime import timedelta
-
+from datetime import timedelta,date
+from django.utils.timezone import localdate
 # ------------------  Usuário  ------------------
 User = get_user_model()
 
@@ -74,10 +74,37 @@ def baixar_historico_geral_excel(request):
 # ------------------  PDF  ------------------
 @login_required
 def baixar_historico_geral_pdf(request):
-    registros = RegistroPonto.objects.select_related('colaborador').order_by('colaborador__nome', 'data')
+    cpf = request.GET.get('cpf', '').strip()
+    cpf_limpo = cpf.replace('.', '').replace('-', '')
+    lider_id = request.GET.get('lider', '').strip()
+    data = request.GET.get('data')
+
+    registros = RegistroPonto.objects.select_related('colaborador').all()
+
+    # Filtra por CPF, se válido
+    if cpf_limpo and len(cpf_limpo) == 11 and cpf_limpo.isdigit():
+        registros = registros.filter(colaborador__cpf=cpf_limpo)
+
+    # Filtra por líder, se informado
+    if lider_id:
+        registros = registros.filter(colaborador__lider_id=lider_id)
+
+    # Filtra por data, padrão para hoje se não informado
+    if not data:
+        data = localdate()
+    else:
+        try:
+            data = date.fromisoformat(data)
+        except ValueError:
+            data = localdate()
+
+    registros = registros.filter(data=data).order_by('colaborador__nome', 'data')
 
     html_string = render_to_string('ponto/pdf_pontos.html', {
         'registros': registros,
+        'cpf': cpf,
+        'lider': lider_id,
+        'data': data.strftime('%Y-%m-%d'),
     })
 
     response = HttpResponse(content_type='application/pdf')
@@ -168,14 +195,17 @@ def registrar_ponto(request):
 # ------------------  Listagem  ------------------
 @login_required
 def listar_pontos(request):
-    
     if not is_gerente(request.user):
         messages.error(request, 'Acesso restrito. Apenas gerentes podem acessar esta página.')
         return redirect('registrar_ponto')
-    
+
     cpf = request.GET.get('cpf', '').strip()
     cpf_limpo = cpf.replace('.', '').replace('-', '')
     lider_id = request.GET.get('lider', '').strip()
+    data = request.GET.get('data')
+
+    # Checar se algum filtro foi usado
+    filtros_usados = any([cpf_limpo, lider_id, data])
 
     registros = RegistroPonto.objects.select_related('colaborador').all()
 
@@ -184,6 +214,20 @@ def listar_pontos(request):
 
     if lider_id:
         registros = registros.filter(colaborador__lider_id=lider_id)
+
+    # Se algum filtro foi usado, aplicar o filtro de data
+    if filtros_usados:
+        if data:
+            try:
+                data_formatada = date.fromisoformat(data)
+                registros = registros.filter(data=data_formatada)
+            except ValueError:
+                messages.warning(request, 'Data inválida. Nenhum filtro de data foi aplicado.')
+        # Se data foi enviada mas inválida, não aplica nada
+    else:
+        # Nenhum filtro → padrão: mostrar registros de hoje
+        data = localdate()
+        registros = registros.filter(data=data)
 
     registros = registros.order_by('-data', '-entrada')
 
@@ -199,6 +243,7 @@ def listar_pontos(request):
         'lider': lider_id,
         'page_obj': page_obj,
         'lideres': lideres,
+        'data': data if isinstance(data, str) else data.strftime('%Y-%m-%d'),
     })
 
 

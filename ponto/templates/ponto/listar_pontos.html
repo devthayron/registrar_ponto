@@ -63,7 +63,6 @@
           <th>Nome</th>
           <th>Data</th>
           <th>Entrada</th>
-          <th>Saída</th>
           <th>Líder</th>
         </tr>
       </thead>
@@ -80,7 +79,6 @@
           <td>{{ r.colaborador.nome|default:"-" }}</td>
           <td>{{ r.data|date:"d/m/Y" }}</td>
           <td>{% if r.entrada %}{{ r.entrada|time:"H:i" }}{% else %}-{% endif %}</td>
-          <td>{% if r.saida %}{{ r.saida|time:"H:i" }}{% else %}-{% endif %}</td>
           <td>{{ r.lider_nome|default:"-" }}</td>
         </tr>
         {% endfor %}

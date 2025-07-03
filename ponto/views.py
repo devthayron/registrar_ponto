@@ -140,34 +140,28 @@ def registrar_ponto(request):
                 data=hoje
             )
 
-            # Se entrada e saída já existem, não deixa registrar de novo
-            if registro.entrada and registro.saida:
-                messages.error(request, 'Entrada e saída já registradas para hoje.')
+            # Se a entrada já foi registrada, não registra novamente
+            if registro.entrada:
+                messages.error(request, 'Entrada já registrada para hoje.')
                 return redirect('registrar_ponto')
 
-            #  Bloqueio por tempo (apenas se ainda falta entrada ou saída)
+            # Bloqueio por tempo para evitar múltiplos registros rápidos
             intervalo = timedelta(seconds=10)
-            ultimo_horario = registro.saida or registro.entrada
-            if ultimo_horario and (agora - ultimo_horario) < intervalo:
-                messages.error(request, 'Leitura ignorada: ponto já registrado recentemente.')
+            if registro.entrada and (agora - registro.entrada) < intervalo:
+                messages.error(request, 'Leitura ignorada: entrada já registrada recentemente.')
                 return redirect('registrar_ponto')
-    
-            # Registrar entrada ou saída
-            if not registro.entrada:
-                registro.entrada = agora
-            elif not registro.saida:
-                registro.saida = agora
 
+            # Registrar apenas a entrada
+            registro.entrada = agora
             registro.save()
-            messages.success(request, 'Ponto registrado com sucesso!')
+            messages.success(request, 'Entrada registrada com sucesso!')
 
         except Exception as e:
-            messages.error(request, f'Erro ao registrar ponto: {e}')
+            messages.error(request, f'Erro ao registrar entrada: {e}')
 
         return redirect('registrar_ponto')
 
     return render(request, 'ponto/registrar_ponto.html')
-
 
 
 

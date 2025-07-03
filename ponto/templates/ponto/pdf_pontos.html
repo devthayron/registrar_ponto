@@ -51,7 +51,6 @@
                 <th>Nome</th>
                 <th>Data</th>
                 <th>Entrada</th>
-                <th>Saída</th>
                 <th>Líder</th>
             </tr>
         </thead>
@@ -62,7 +61,6 @@
                 <td>{{ registro.colaborador.nome }}</td>
                 <td>{{ registro.data|date:"d/m/Y" }}</td>
                 <td>{{ registro.entrada|time:"H:i"|default:"---" }}</td>
-                <td>{{ registro.saida|time:"H:i"|default:"---" }}</td>
                 <td>{{ registro.lider_nome|default:"---" }}</td>
             </tr>
             {% empty %}

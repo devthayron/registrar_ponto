@@ -168,7 +168,6 @@ h3 img {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
-  display: none;
 }
 
 .ponto-form button:hover {
@@ -281,7 +280,7 @@ header h1 {
 
 .btn.primary:hover {
   background-color: #1f6391;
-}
+} 
 
 .btn.secondary {
   background-color: #bdc3c7;
@@ -378,6 +377,7 @@ main {
   flex: 1;
 }
 
+
 .footer {
   padding: 0.5rem 1rem;
   background-color: #1f2937;
@@ -391,21 +391,6 @@ main {
   bottom: 0;
   width: 100%;
 }
-
-.texto-mobile {
-  display: none;
-}
-
-@media (max-width: 600px) {
-  .texto-desktop {
-    display: none;
-  }
-
-  .texto-mobile {
-    display: block;
-  }
-}
-
 .footer p {
   margin: 0;
   line-height: 1.6;
@@ -414,6 +399,11 @@ main {
 .footer strong {
   color: #ffffff;
 }
+
+.texto-mobile {
+  display: none;
+}
+
 form {
   display: block;
   width: 100%;
@@ -448,7 +438,7 @@ form {
   border-radius: 8px;
   /* flex: 1; */
   width: 220px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease; 
 }
 
 .gerente-container form input[type="text"]:focus {
@@ -488,6 +478,7 @@ form {
   cursor: pointer;
   transition: background-color 0.3s ease;
   height: 42px;
+
 }
 
 .gerente-container form a:hover {
@@ -544,6 +535,7 @@ form {
 
 /* lider */
 .dropdown {
+  
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -582,7 +574,7 @@ form {
 
 label {
   display: block;
-  margin-top: 16px;
+  margin-top: 8px;
   margin-bottom: 4px;
   font-weight: bold;
 }
@@ -648,6 +640,7 @@ label {
   }
 
   .login-header h1 {
+    margin-top: 1rem;
     font-size: 1.3rem;
   }
 
@@ -682,6 +675,27 @@ label {
     top: 36px;
     right: 16px;
     font-size: 1.2rem;
+  }
+  /* Ajusta o espaçamento entre os botões no form gerente */
+  .footer {
+    padding: 0.2rem;
+    font-size: 0.9rem;
+  }
+  .texto-desktop {
+    display: none;
+  }
+
+  .texto-mobile {
+    display: block;
+  }
+
+  .footer p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .footer strong {
+    color: #ffffff;
   }
 }
 

@@ -168,6 +168,7 @@ h3 img {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: none;
 }
 
 .ponto-form button:hover {
@@ -280,7 +281,7 @@ header h1 {
 
 .btn.primary:hover {
   background-color: #1f6391;
-} 
+}
 
 .btn.secondary {
   background-color: #bdc3c7;
@@ -378,14 +379,31 @@ main {
 }
 
 .footer {
-  padding: 0.1rem 2rem;
-  background-color: #1f2937; /* tom escuro moderno */
-  color: #e5e7eb; /* cinza claro para contraste */
+  padding: 0.5rem 1rem;
+  background-color: #1f2937;
+  color: #e5e7eb;
   font-size: 0.95rem;
   text-align: center;
   border-top: 3px solid #0077cc;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   font-family: "Segoe UI", Tahoma, sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.texto-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .texto-desktop {
+    display: none;
+  }
+
+  .texto-mobile {
+    display: block;
+  }
 }
 
 .footer p {
@@ -430,7 +448,7 @@ form {
   border-radius: 8px;
   /* flex: 1; */
   width: 220px;
-  transition: border-color 0.3s ease; 
+  transition: border-color 0.3s ease;
 }
 
 .gerente-container form input[type="text"]:focus {
@@ -470,7 +488,6 @@ form {
   cursor: pointer;
   transition: background-color 0.3s ease;
   height: 42px;
-
 }
 
 .gerente-container form a:hover {
@@ -527,7 +544,6 @@ form {
 
 /* lider */
 .dropdown {
-  
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;

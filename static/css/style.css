@@ -587,6 +587,7 @@ label {
   .gerente-container form {
     flex-direction: column;
     gap: 1rem;
+    align-items: initial;
   }
 
   .login-form input,
@@ -607,6 +608,7 @@ label {
     width: 100%;
     font-size: 1.1rem;
     padding: 0.9rem;
+    text-align: center;
   }
 
   /* Ajusta o header e logo */

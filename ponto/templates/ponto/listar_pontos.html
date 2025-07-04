@@ -28,12 +28,15 @@
     {% endfor %}
   </select>
 
+      <label for="data">Data:</label>
+    <input
+      type="date"
+      id="data"
+      name="data"
+      value="{{ data|default:'' }}"
+    />
   <button type="submit">Buscar</button>
   <a href="{% url 'listar_pontos' %}">Limpar</a>
-
-  <!-- <a href="{% url 'baixar_historico_geral_pdf' %}" class="btn btn-primary">(PDF)</a>
-  
-  <a href="{% url 'baixar_historico_geral_excel' %}" class="btn btn-success">(Excel)</a> -->
 </form>
   
 
@@ -45,7 +48,7 @@
       <div style="display: flex; align-items: center; gap: 12px;">
         <h3 style="margin: 0;">Todos os registros</h3>
         
-        <a href="{% url 'baixar_historico_geral_pdf' %}" title="Baixar PDF">
+        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data={{ data }}" title="Baixar PDF">
           <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
         </a>
 
@@ -63,7 +66,6 @@
           <th>Nome</th>
           <th>Data</th>
           <th>Entrada</th>
-          <th>Saída</th>
           <th>Líder</th>
         </tr>
       </thead>
@@ -80,7 +82,6 @@
           <td>{{ r.colaborador.nome|default:"-" }}</td>
           <td>{{ r.data|date:"d/m/Y" }}</td>
           <td>{% if r.entrada %}{{ r.entrada|time:"H:i" }}{% else %}-{% endif %}</td>
-          <td>{% if r.saida %}{{ r.saida|time:"H:i" }}{% else %}-{% endif %}</td>
           <td>{{ r.lider_nome|default:"-" }}</td>
         </tr>
         {% endfor %}

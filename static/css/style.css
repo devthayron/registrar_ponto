@@ -99,16 +99,12 @@ h3 img {
 }
 
 .login-footer {
+  display: flex;
   margin-top: 1.5rem;
-  text-align: center;
+  justify-content: center;
   font-size: 0.85rem;
   color: #777;
-}
-
-.login-footer a {
-  color: #0077cc;
-  text-decoration: none;
-  margin-right: 10px;
+  align-items: center;
 }
 
 /* Registro */
@@ -192,7 +188,7 @@ h3 img {
 .gerente-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* espaço entre form e tabela */
+  gap: 6px; /* espaço entre form e tabela */
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fff;
@@ -207,15 +203,6 @@ header h1 {
   margin-bottom: 2rem;
   color: #34495e;
   text-align: center;
-}
-
-/* Filtros */
-.filtros {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.5rem;
-  margin-bottom: 2.5rem;
-  justify-content: center;
 }
 
 .input-group {
@@ -280,7 +267,7 @@ header h1 {
 
 .btn.primary:hover {
   background-color: #1f6391;
-} 
+}
 
 .btn.secondary {
   background-color: #bdc3c7;
@@ -377,9 +364,8 @@ main {
   flex: 1;
 }
 
-
 .footer {
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
   background-color: #1f2937;
   color: #e5e7eb;
   font-size: 0.95rem;
@@ -438,7 +424,7 @@ form {
   border-radius: 8px;
   /* flex: 1; */
   width: 220px;
-  transition: border-color 0.3s ease; 
+  transition: border-color 0.3s ease;
 }
 
 .gerente-container form input[type="text"]:focus {
@@ -478,7 +464,6 @@ form {
   cursor: pointer;
   transition: background-color 0.3s ease;
   height: 42px;
-
 }
 
 .gerente-container form a:hover {
@@ -535,7 +520,6 @@ form {
 
 /* lider */
 .dropdown {
-  
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -579,12 +563,8 @@ label {
   font-weight: bold;
 }
 
-/* Meta tag importante para responsividade, lembre-se de adicionar no <head> do HTML */
-/* <meta name="viewport" content="width=device-width, initial-scale=1"> */
+/* Media Queries para Mobile */
 
-/* =========================
-   Media Queries para Mobile
-   ========================= */
 @media (max-width: 600px) {
   /* Ajusta padding e centraliza main */
   main {
@@ -709,4 +689,44 @@ label {
   .gerente-container form a:hover {
     background-color: inherit;
   }
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h3 {
+  margin-top: 0;
+}
+
+.popup-content button {
+  margin-top: 20px;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #0056b3;
 }

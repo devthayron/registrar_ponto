@@ -529,7 +529,7 @@ form {
   border-radius: 6px;
   font-size: 16px;
   color: #333;
-  width: 200px;
+  width: 170px;
   max-width: 300px;
   margin-bottom: 0px;
   background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
@@ -555,6 +555,10 @@ form {
   background-color: #fff;
   appearance: none; /* Remove estilo nativo do navegador */
 }
+
+/* .data{
+  width: 170px;
+} */
 
 label {
   display: block;

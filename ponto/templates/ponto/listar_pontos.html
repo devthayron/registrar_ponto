@@ -28,13 +28,22 @@
     {% endfor %}
   </select>
 
-      <label for="data">Data:</label>
+    <label for="data_inicial">Data Inicial:</label>
     <input class="dropdown data"
       type="date"
-      id="data"
-      name="data"
-      value="{{ data|default:'' }}"
+      id="data_inicial"
+      name="data_inicial"
+      value="{{ data_inicial|default:'' }}"
     />
+
+    <label for="data_final">Data Final:</label>
+    <input class="dropdown data"
+      type="date"
+      id="data_final"
+      name="data_final"
+      value="{{ data_final|default:'' }}"
+    />
+
   <button type="submit">Buscar</button>
   <a href="{% url 'listar_pontos' %}">Limpar</a>
 </form>

@@ -202,11 +202,10 @@ def listar_pontos(request):
     cpf = request.GET.get('cpf', '').strip()
     cpf_limpo = cpf.replace('.', '').replace('-', '')
     lider_id = request.GET.get('lider', '').strip()
-    data = request.GET.get('data')
+    data_inicial = request.GET.get('data_inicial')
+    data_final = request.GET.get('data_final')
 
-    # Checar se algum filtro foi usado
-    filtros_usados = any([cpf_limpo, lider_id, data])
-
+    filtros_usados = any([cpf_limpo, lider_id, data_inicial, data_final])
     registros = RegistroPonto.objects.select_related('colaborador').all()
 
     if cpf_limpo and len(cpf_limpo) == 11 and cpf_limpo.isdigit():
@@ -215,26 +214,24 @@ def listar_pontos(request):
     if lider_id:
         registros = registros.filter(colaborador__lider_id=lider_id)
 
-    # Se algum filtro foi usado, aplicar o filtro de data
     if filtros_usados:
-        if data:
-            try:
-                data_formatada = date.fromisoformat(data)
-                registros = registros.filter(data=data_formatada)
-            except ValueError:
-                messages.warning(request, 'Data inválida. Nenhum filtro de data foi aplicado.')
-        # Se data foi enviada mas inválida, não aplica nada
+        try:
+            if data_inicial:
+                data_ini = date.fromisoformat(data_inicial)
+                registros = registros.filter(data__gte=data_ini)
+            if data_final:
+                data_fim = date.fromisoformat(data_final)
+                registros = registros.filter(data__lte=data_fim)
+        except ValueError:
+            messages.warning(request, 'Datas inválidas. Nenhum filtro de data foi aplicado.')
     else:
-        # Nenhum filtro → padrão: mostrar registros de hoje
-        data = localdate()
-        registros = registros.filter(data=data)
+        data_hoje = localdate()
+        registros = registros.filter(data=data_hoje)
 
     registros = registros.order_by('-data', '-entrada')
-
     paginator = Paginator(registros, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
     lideres = Lider.objects.all()
 
     return render(request, 'ponto/listar_pontos.html', {
@@ -243,7 +240,8 @@ def listar_pontos(request):
         'lider': lider_id,
         'page_obj': page_obj,
         'lideres': lideres,
-        'data': data if isinstance(data, str) else data.strftime('%Y-%m-%d'),
+        'data_inicial': data_inicial,
+        'data_final': data_final,
     })
 
 

@@ -22,7 +22,6 @@ def is_gerente(user):
     return user.nivel == 'gerente'
 
 # ------------------  Filtro em exportações  ------------------
-from datetime import datetime
 
 def filtrar_registros(request):
     cpf = request.GET.get('cpf', '').strip()
@@ -39,23 +38,21 @@ def filtrar_registros(request):
     if lider_id:
         registros = registros.filter(colaborador__lider_id=lider_id)
 
-    try:
-        if data_inicial and data_final:
-            data_ini = datetime.strptime(data_inicial, '%d/%m/%Y').date()
-            data_fim = datetime.strptime(data_final, '%d/%m/%Y').date()
-            registros = registros.filter(data__range=(data_ini, data_fim))
-        elif data_inicial:
-            data_ini = datetime.strptime(data_inicial, '%d/%m/%Y').date()
+    if data_inicial:
+        try:
+            data_ini = date.fromisoformat(data_inicial)
             registros = registros.filter(data__gte=data_ini)
-        elif data_final:
-            data_fim = datetime.strptime(data_final, '%d/%m/%Y').date()
+        except ValueError:
+            pass
+
+    if data_final:
+        try:
+            data_fim = date.fromisoformat(data_final)
             registros = registros.filter(data__lte=data_fim)
-        # Se nenhuma data for passada, não filtra
-    except ValueError:
-        pass  # Ignora erro de data
+        except ValueError:
+            pass
 
     return registros.order_by('colaborador__nome', 'data')
-
 
 
 # ------------------  Excel  ------------------
@@ -78,7 +75,6 @@ def baixar_historico_geral_excel(request):
 
     for row_num, registro in enumerate(registros, start=2):
         entrada_formatada = timezone.localtime(registro.entrada).strftime('%H:%M') if registro.entrada else '---'
-        saida_formatada = timezone.localtime(registro.saida).strftime('%H:%M') if registro.saida else '---'
 
         ws.cell(row=row_num, column=1, value=registro.colaborador.cpf)
         ws.cell(row=row_num, column=2, value=registro.colaborador.nome)

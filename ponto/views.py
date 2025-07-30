@@ -57,7 +57,6 @@ def filtrar_registros(request):
 
 
 # ------------------  Excel  ------------------
-
 @login_required
 def baixar_historico_geral_excel(request):
     registros = filtrar_registros(request)
@@ -103,14 +102,15 @@ def baixar_historico_geral_excel(request):
 # ------------------  PDF  ------------------
 @login_required
 def baixar_historico_geral_pdf(request):
-    registros = filtrar_registros(request)
+    hoje = localdate()
+    registros = RegistroPonto.objects.select_related('colaborador').filter(data=hoje).order_by('colaborador__nome', 'data')
 
     html_string = render_to_string('ponto/pdf_pontos.html', {
         'registros': registros,
-        'cpf': request.GET.get('cpf', ''),
-        'lider': request.GET.get('lider', ''),
-        'data_inicial': request.GET.get('data_inicial', ''),
-        'data_final': request.GET.get('data_final', ''),
+        'cpf': '',
+        'lider': '',
+        'data_inicial': hoje.strftime('%Y-%m-%d'),
+        'data_final': hoje.strftime('%Y-%m-%d'),
     })
 
     response = HttpResponse(content_type='application/pdf')
@@ -122,6 +122,7 @@ def baixar_historico_geral_pdf(request):
         return HttpResponse('Erro ao gerar PDF', status=500)
 
     return response
+
 
 
 # ------------------  Login  ------------------

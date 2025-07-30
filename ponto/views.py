@@ -13,6 +13,7 @@ from openpyxl.styles import Font, Alignment
 from openpyxl import Workbook
 from datetime import timedelta,date
 from django.utils.timezone import localdate
+
 # ------------------  Usuário  ------------------
 User = get_user_model()
 
@@ -20,19 +21,51 @@ User = get_user_model()
 def is_gerente(user):
     return user.nivel == 'gerente'
 
+# ------------------  Filtro em exportações  ------------------
+def filtrar_registros(request):
+    cpf = request.GET.get('cpf', '').strip()
+    cpf_limpo = cpf.replace('.', '').replace('-', '')
+    lider_id = request.GET.get('lider', '').strip()
+    data_inicial = request.GET.get('data_inicial')
+    data_final = request.GET.get('data_final')
+
+    registros = RegistroPonto.objects.select_related('colaborador').all()
+
+    if cpf_limpo and len(cpf_limpo) == 11 and cpf_limpo.isdigit():
+        registros = registros.filter(colaborador__cpf=cpf_limpo)
+
+    if lider_id:
+        registros = registros.filter(colaborador__lider_id=lider_id)
+
+    try:
+        if data_inicial and data_final:
+            data_ini = date.fromisoformat(data_inicial)
+            data_fim = date.fromisoformat(data_final)
+            registros = registros.filter(data__range=(data_ini, data_fim))
+        elif data_inicial:
+            data_ini = date.fromisoformat(data_inicial)
+            registros = registros.filter(data__gte=data_ini)
+        elif data_final:
+            data_fim = date.fromisoformat(data_final)
+            registros = registros.filter(data__lte=data_fim)
+        else:
+            registros = registros.filter(data=localdate())
+    except ValueError:
+        registros = registros.filter(data=localdate())
+
+    return registros.order_by('colaborador__nome', 'data')
+
+
 # ------------------  Excel  ------------------
 
 @login_required
 def baixar_historico_geral_excel(request):
-    # Query com registros ordenados como no PDF
-    registros = RegistroPonto.objects.select_related('colaborador').order_by('colaborador__nome', 'data')
+    registros = filtrar_registros(request)
 
-    # Cria workbook e planilha
     wb = Workbook()
     ws = wb.active
     ws.title = "Histórico Geral"
 
-    # Cabeçalhos
     headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Saída', 'Conferente']
     header_font = Font(bold=True)
     alignment = Alignment(horizontal='center')
@@ -42,7 +75,6 @@ def baixar_historico_geral_excel(request):
         cell.font = header_font
         cell.alignment = alignment
 
-    # Preenche as linhas
     for row_num, registro in enumerate(registros, start=2):
         entrada_formatada = timezone.localtime(registro.entrada).strftime('%H:%M') if registro.entrada else '---'
         saida_formatada = timezone.localtime(registro.saida).strftime('%H:%M') if registro.saida else '---'
@@ -54,57 +86,31 @@ def baixar_historico_geral_excel(request):
         ws.cell(row=row_num, column=5, value=saida_formatada)
         ws.cell(row=row_num, column=6, value=getattr(registro, 'lider_nome', ''))
 
-    # Ajusta largura das colunas para melhorar visualização
     for col in ws.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
         adjusted_width = max_length + 2
         ws.column_dimensions[col[0].column_letter].width = adjusted_width
 
-    # Prepara resposta para download do Excel
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
-    filename = f"historico_geral.xlsx"
+    filename = "historico_geral.xlsx"
     response['Content-Disposition'] = f'attachment; filename={filename}'
 
     wb.save(response)
     return response
 
-
 # ------------------  PDF  ------------------
 @login_required
 def baixar_historico_geral_pdf(request):
-    cpf = request.GET.get('cpf', '').strip()
-    cpf_limpo = cpf.replace('.', '').replace('-', '')
-    lider_id = request.GET.get('lider', '').strip()
-    data = request.GET.get('data')
-
-    registros = RegistroPonto.objects.select_related('colaborador').all()
-
-    # Filtra por CPF, se válido
-    if cpf_limpo and len(cpf_limpo) == 11 and cpf_limpo.isdigit():
-        registros = registros.filter(colaborador__cpf=cpf_limpo)
-
-    # Filtra por líder, se informado
-    if lider_id:
-        registros = registros.filter(colaborador__lider_id=lider_id)
-
-    # Filtra por data, padrão para hoje se não informado
-    if not data:
-        data = localdate()
-    else:
-        try:
-            data = date.fromisoformat(data)
-        except ValueError:
-            data = localdate()
-
-    registros = registros.filter(data=data).order_by('colaborador__nome', 'data')
+    registros = filtrar_registros(request)
 
     html_string = render_to_string('ponto/pdf_pontos.html', {
         'registros': registros,
-        'cpf': cpf,
-        'lider': lider_id,
-        'data': data.strftime('%Y-%m-%d'),
+        'cpf': request.GET.get('cpf', ''),
+        'lider': request.GET.get('lider', ''),
+        'data_inicial': request.GET.get('data_inicial', ''),
+        'data_final': request.GET.get('data_final', ''),
     })
 
     response = HttpResponse(content_type='application/pdf')
@@ -116,6 +122,7 @@ def baixar_historico_geral_pdf(request):
         return HttpResponse('Erro ao gerar PDF', status=500)
 
     return response
+
 
 # ------------------  Login  ------------------
 def login_view(request):
@@ -242,6 +249,7 @@ def listar_pontos(request):
         'lideres': lideres,
         'data_inicial': data_inicial,
         'data_final': data_final,
+        'request': request,
     })
 
 

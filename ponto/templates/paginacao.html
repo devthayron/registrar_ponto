@@ -1,23 +1,28 @@
 <div class="paginacao">
   {% if page_obj.has_other_pages %}
-    {% if page_obj.has_previous %}
-      <a class="page-link" href="?page={{ page_obj.previous_page_number }}&cpf={{ cpf }}">&laquo; Anterior</a>
-    {% else %}
-      <span class="page-disabled">&laquo; Anterior</span>
-    {% endif %}
+    {% comment %} Gera a URL base com os filtros atuais (sem duplicar 'page') {% endcomment %}
+    {% with request.GET.urlencode as query %}
+      {% with query|cut:'page='|cut:'&page=' as filtered_query %}
+        {% if page_obj.has_previous %}
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if filtered_query %}&{{ filtered_query }}{% endif %}">&laquo; Anterior</a>
+        {% else %}
+          <span class="page-disabled">&laquo; Anterior</span>
+        {% endif %}
 
-    {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-        <span class="page-current">{{ num }}</span>
-      {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
-        <a class="page-link" href="?page={{ num }}&cpf={{ cpf }}">{{ num }}</a>
-      {% endif %}
-    {% endfor %}
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <span class="page-current">{{ num }}</span>
+          {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+            <a class="page-link" href="?page={{ num }}{% if filtered_query %}&{{ filtered_query }}{% endif %}">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
 
-    {% if page_obj.has_next %}
-      <a class="page-link" href="?page={{ page_obj.next_page_number }}&cpf={{ cpf }}">Próximo &raquo;</a>
-    {% else %}
-      <span class="page-disabled">Próximo &raquo;</span>
-    {% endif %}
+        {% if page_obj.has_next %}
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if filtered_query %}&{{ filtered_query }}{% endif %}">Próximo &raquo;</a>
+        {% else %}
+          <span class="page-disabled">Próximo &raquo;</span>
+        {% endif %}
+      {% endwith %}
+    {% endwith %}
   {% endif %}
 </div>

@@ -48,10 +48,11 @@ def filtrar_registros(request):
         elif data_final:
             data_fim = date.fromisoformat(data_final)
             registros = registros.filter(data__lte=data_fim)
-        else:
-            registros = registros.filter(data=localdate())
+        # else:
+        #     registros = registros.filter(data=localdate())
     except ValueError:
-        registros = registros.filter(data=localdate())
+        # registros = registros.filter(data=localdate())
+        pass
 
     return registros.order_by('colaborador__nome', 'data')
 

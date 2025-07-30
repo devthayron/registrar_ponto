@@ -59,11 +59,9 @@
           <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
         </a>
 
-        <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" class="btn btn-success">
-          Exportar Excel
-        </a>
-          <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
-        </a>
+        <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Excel">
+        <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
+      </a>
       </div>
     {% endif %}
 

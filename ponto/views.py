@@ -64,7 +64,7 @@ def baixar_historico_geral_excel(request):
     ws = wb.active
     ws.title = "Histórico Geral"
 
-    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Conferente']
+    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Conferente',]  # 'Status'
     header_font = Font(bold=True)
     alignment = Alignment(horizontal='center')
 
@@ -77,11 +77,17 @@ def baixar_historico_geral_excel(request):
         entrada_formatada = timezone.localtime(registro.entrada).strftime('%H:%M') if registro.entrada else '---'
 
         ws.cell(row=row_num, column=1, value=registro.colaborador.cpf)
-        ws.cell(row=row_num, column=2, value=registro.colaborador.nome)
+        
+        nome = registro.colaborador.nome
+        if not registro.colaborador.is_active:
+            nome = f"(INATIVO) {nome}"
+        ws.cell(row=row_num, column=2, value=nome)
         ws.cell(row=row_num, column=3, value=registro.data.strftime('%d/%m/%Y') if registro.data else '')
         ws.cell(row=row_num, column=4, value=entrada_formatada)
         ws.cell(row=row_num, column=5, value=getattr(registro, 'lider_nome', ''))
+        # ws.cell(row=row_num, column=6, value='ATIVO' if registro.colaborador.is_active else 'INATIVO')
 
+        
     for col in ws.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
         adjusted_width = max_length + 2

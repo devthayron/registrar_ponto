@@ -42,7 +42,11 @@ class LiderAdmin(admin.ModelAdmin):
 class ColaboradorAdmin(admin.ModelAdmin):
     list_display = ('cpf_formatado', 'nome', 'lider')
     search_fields = ('cpf', 'nome')
-    list_filter = ('lider',)  
+    list_filter = ('lider','is_active')  
+    
+    # def get_queryset(self, request):
+    #     qs = super().get_queryset(request)
+    #     return qs.filter(is_active=True)  # filtra só ativos
 
     def cpf_formatado(self, obj):
         cpf = obj.cpf

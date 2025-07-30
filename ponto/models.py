@@ -29,7 +29,7 @@ class Colaborador(models.Model):
         on_delete=models.SET_NULL,
         related_name='colaboradores'
     )
-
+    is_active = models.BooleanField(default=True)
     def __str__(self):
         return f'{self.nome} ({self.cpf})' if self.nome else self.cpf
 

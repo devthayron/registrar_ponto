@@ -22,6 +22,8 @@ def is_gerente(user):
     return user.nivel == 'gerente'
 
 # ------------------  Filtro em exportações  ------------------
+from datetime import datetime
+
 def filtrar_registros(request):
     cpf = request.GET.get('cpf', '').strip()
     cpf_limpo = cpf.replace('.', '').replace('-', '')
@@ -39,22 +41,21 @@ def filtrar_registros(request):
 
     try:
         if data_inicial and data_final:
-            data_ini = date.fromisoformat(data_inicial)
-            data_fim = date.fromisoformat(data_final)
+            data_ini = datetime.strptime(data_inicial, '%d/%m/%Y').date()
+            data_fim = datetime.strptime(data_final, '%d/%m/%Y').date()
             registros = registros.filter(data__range=(data_ini, data_fim))
         elif data_inicial:
-            data_ini = date.fromisoformat(data_inicial)
+            data_ini = datetime.strptime(data_inicial, '%d/%m/%Y').date()
             registros = registros.filter(data__gte=data_ini)
         elif data_final:
-            data_fim = date.fromisoformat(data_final)
+            data_fim = datetime.strptime(data_final, '%d/%m/%Y').date()
             registros = registros.filter(data__lte=data_fim)
-        # else:
-        #     registros = registros.filter(data=localdate())
+        # Se nenhuma data for passada, não filtra
     except ValueError:
-        # registros = registros.filter(data=localdate())
-        pass
+        pass  # Ignora erro de data
 
     return registros.order_by('colaborador__nome', 'data')
+
 
 
 # ------------------  Excel  ------------------

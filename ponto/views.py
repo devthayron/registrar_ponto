@@ -240,7 +240,7 @@ def listar_pontos(request):
         registros = registros.filter(data=data_hoje)
 
     registros = registros.order_by('-data', '-entrada')
-    paginator = Paginator(registros, 8)
+    paginator = Paginator(registros, 7)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     lideres = Lider.objects.all()

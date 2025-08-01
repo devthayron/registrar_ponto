@@ -109,7 +109,6 @@ def baixar_historico_geral_excel(request):
 def baixar_presenca_excel(request):
     registros = filtrar_registros(request)
 
-    # Filtro manual extra (se necessário)
     cpf = request.GET.get('cpf', '').strip().replace('.', '').replace('-', '')
     lider_id = request.GET.get('lider', '').strip()
     data_inicial = request.GET.get('data_inicial')
@@ -135,15 +134,15 @@ def baixar_presenca_excel(request):
         except ValueError:
             pass
 
-    # Se nenhuma data foi enviada, assume o mês atual
     if not data_inicial and not data_final:
         hoje = localdate()
         registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
 
-    # Agrupamento das presenças por colaborador e dia
+    # Agrupamento
     presencas = defaultdict(lambda: {
         'nome': '',
         'cpf': '',
+        'contrato': '',
         'dias': [''] * 31
     })
 
@@ -152,39 +151,40 @@ def baixar_presenca_excel(request):
         cpf = r.colaborador.cpf
         presencas[cpf]['nome'] = r.colaborador.nome
         presencas[cpf]['cpf'] = cpf
+        presencas[cpf]['contrato'] = getattr(r.colaborador.lider, 'nome', '—')  # ou lider_id se for ID
         presencas[cpf]['dias'][dia - 1] = 'S'
 
-    # Criação do Excel
+    # Excel
     wb = Workbook()
     ws = wb.active
     ws.title = "Controle de Presença"
 
     # Cabeçalhos
-    headers = ["Funcionário", "CPF"] + [str(d) for d in range(1, 32)]
+    headers = ["Funcionário", "CPF", "Contrato"] + [str(d) for d in range(1, 32)]
     ws.append(headers)
 
     for cell in ws[1]:
         cell.font = Font(bold=True)
         cell.alignment = Alignment(horizontal='center')
 
-    # Dados das presenças
-    for dados in presencas.values():
-        linha = [dados['nome'], dados['cpf']] + dados['dias']
+    # Dados
+    for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
+        linha = [dados['nome'], dados['cpf'], dados['contrato']] + dados['dias']
         ws.append(linha)
 
-    # Linha de totais por dia
-    total_por_dia = ["Total", ""]
+    # Totais
+    total_por_dia = ["Total", "", ""]
     for i in range(31):
         total = sum(1 for dados in presencas.values() if dados['dias'][i] == 'S')
         total_por_dia.append(total)
     ws.append(total_por_dia)
 
-    # Ajuste de largura das colunas
+    # Largura colunas
     for col in ws.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
         ws.column_dimensions[col[0].column_letter].width = max_length + 2
 
-    # Resposta HTTP com o Excel
+    # Download
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )

@@ -13,6 +13,9 @@ from openpyxl.styles import Font, Alignment
 from openpyxl import Workbook
 from datetime import timedelta,date
 from django.utils.timezone import localdate
+from calendar import monthrange
+from collections import defaultdict
+from django.db.models.functions import TruncMonth
 
 # ------------------  Usuário  ------------------
 User = get_user_model()
@@ -266,4 +269,83 @@ def listar_pontos(request):
         'request': request,
     })
 
+@login_required
+def tabela_presenca(request):
+    cpf = request.GET.get('cpf', '').strip().replace('.', '').replace('-', '')
+    setor = request.GET.get('setor', '')
+    mes_str = request.GET.get('mes')  # exemplo: '2025-08'
 
+    registros = RegistroPonto.objects.select_related('colaborador__lider')
+
+    # Filtros simples
+    if cpf and len(cpf) == 11 and cpf.isdigit():
+        registros = registros.filter(colaborador__cpf=cpf)
+    if setor:
+        registros = registros.filter(colaborador__lider__nome=setor)
+
+    # Lista de meses disponíveis
+    meses_disponiveis = (
+        registros
+        .annotate(mes=TruncMonth('data'))
+        .values_list('mes', flat=True)
+        .distinct()
+        .order_by('mes')
+    )
+
+    # Define mês atual
+    if mes_str:
+        try:
+            mes_atual = datetime.strptime(mes_str + '-01', '%Y-%m-%d').date()
+        except ValueError:
+            mes_atual = meses_disponiveis.last() if meses_disponiveis else None
+    else:
+        mes_atual = meses_disponiveis.last() if meses_disponiveis else None
+
+    if not mes_atual:
+        contexto = {
+            'tabela': {},
+            'cpf': cpf,
+            'setor': setor,
+            'setores': [],
+            'meses_disponiveis': [],
+            'dias': [],
+            'mes_atual': None,
+            'total_por_dia': {},
+        }
+        return render(request, 'ponto/tabela_presenca.html', contexto)
+
+    registros_mes = registros.filter(data__year=mes_atual.year, data__month=mes_atual.month)
+
+    tabela = defaultdict(lambda: defaultdict(str))
+    dias_com_presenca = set()
+
+    for r in registros_mes:
+        chave = (r.colaborador.nome, r.colaborador.cpf)
+        tabela[chave][r.data.day] = 'S'
+        dias_com_presenca.add(r.data.day)
+
+    dias = sorted(list(dias_com_presenca))
+
+    total_por_dia = {}
+    for dia in dias:
+        total_por_dia[dia] = sum(1 for presencas in tabela.values() if presencas.get(dia) == 'S')
+
+    setores = (
+        RegistroPonto.objects
+        .select_related('colaborador__lider')
+        .values_list('colaborador__lider__nome', flat=True)
+        .distinct()
+        .order_by('colaborador__lider__nome')
+    )
+
+    contexto = {
+        'tabela': dict(tabela),
+        'cpf': cpf,
+        'setor': setor,
+        'setores': setores,
+        'meses_disponiveis': meses_disponiveis,
+        'dias': dias,
+        'mes_atual': mes_atual,
+        'total_por_dia': total_por_dia,
+    }
+    return render(request, 'ponto/tabela_presenca.html', contexto)

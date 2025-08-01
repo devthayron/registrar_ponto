@@ -64,7 +64,7 @@ def baixar_historico_geral_excel(request):
     ws = wb.active
     ws.title = "Histórico Geral"
 
-    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Conferente',]  # 'Status'
+    headers = ['CPF', 'Nome', 'Data', 'Entrada', 'Contrato',]  # 'Status'
     header_font = Font(bold=True)
     alignment = Alignment(horizontal='center')
 
@@ -86,7 +86,6 @@ def baixar_historico_geral_excel(request):
         ws.cell(row=row_num, column=4, value=entrada_formatada)
         ws.cell(row=row_num, column=5, value=getattr(registro, 'lider_nome', ''))
         # ws.cell(row=row_num, column=6, value='ATIVO' if registro.colaborador.is_active else 'INATIVO')
-
         
     for col in ws.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
@@ -106,7 +105,7 @@ def baixar_historico_geral_excel(request):
 @login_required
 def baixar_historico_geral_pdf(request):
     hoje = localdate()
-    registros = RegistroPonto.objects.select_related('colaborador').filter(data=hoje).order_by('colaborador__nome', 'data')
+    registros = filtrar_registros(request).order_by('lider_nome','data','colaborador__nome')
 
     html_string = render_to_string('ponto/pdf_pontos.html', {
         'registros': registros,
@@ -213,8 +212,10 @@ def listar_pontos(request):
     cpf = request.GET.get('cpf', '').strip()
     cpf_limpo = cpf.replace('.', '').replace('-', '')
     lider_id = request.GET.get('lider', '').strip()
-    data_inicial = request.GET.get('data_inicial')
-    data_final = request.GET.get('data_final')
+    data_hoje = localdate()
+    data_inicial = request.GET.get('data_inicial') or data_hoje.isoformat()
+    data_final = request.GET.get('data_final') or data_hoje.isoformat()
+
 
     filtros_usados = any([cpf_limpo, lider_id, data_inicial, data_final])
     registros = RegistroPonto.objects.select_related('colaborador').all()
@@ -239,7 +240,7 @@ def listar_pontos(request):
         data_hoje = localdate()
         registros = registros.filter(data=data_hoje)
 
-    registros = registros.order_by('-data', '-entrada')
+    registros = registros.order_by('-data', 'lider_nome', '-entrada')
     paginator = Paginator(registros, 7)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

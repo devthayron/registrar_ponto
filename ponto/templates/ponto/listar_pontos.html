@@ -62,6 +62,9 @@
         <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Excel">
         <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
       </a>
+        <form action="{% url 'baixar_presenca_excel' %}" method="get">
+        <button type="submit">📥 Baixar Excel</button>
+    </form>
       </div>
     {% endif %}
 

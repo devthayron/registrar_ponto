@@ -104,6 +104,67 @@ def baixar_historico_geral_excel(request):
     wb.save(response)
     return response
 
+@login_required
+def baixar_presenca_excel(request):
+    # Define o mês desejado (agosto neste exemplo)
+    ano = timezone.now().year
+    mes = 8  # agosto
+
+    registros = RegistroPonto.objects.filter(data__year=ano, data__month=mes)
+
+    # Agrupa presença por colaborador e dia
+    presencas = defaultdict(lambda: {
+        'nome': '',
+        'cpf': '',
+        'dias': [''] * 31  # posição 0 = dia 1
+    })
+
+    for r in registros:
+        dia = r.data.day
+        cpf = r.colaborador.cpf
+
+        presencas[cpf]['nome'] = r.colaborador.nome
+        presencas[cpf]['cpf'] = cpf
+        presencas[cpf]['dias'][dia - 1] = 'S'  # Marca como presente
+
+    # Cria o Excel
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Controle de Presença"
+
+    # Cabeçalho
+    headers = ["Funcionário", "CPF"] + [str(d) for d in range(1, 32)]
+    ws.append(headers)
+
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+        cell.alignment = Alignment(horizontal='center')
+
+    # Preenche dados
+    for dados in presencas.values():
+        linha = [dados['nome'], dados['cpf']] + dados['dias']
+        ws.append(linha)
+
+    # Linha de total
+    total_por_dia = ["Total", ""]
+    for i in range(31):
+        total = sum(1 for dados in presencas.values() if dados['dias'][i] == 'S')
+        total_por_dia.append(total)
+    ws.append(total_por_dia)
+
+    # Ajuste de largura
+    for col in ws.columns:
+        max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
+        ws.column_dimensions[col[0].column_letter].width = max_length + 2
+
+    # Geração do Excel como resposta HTTP
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    response['Content-Disposition'] = 'attachment; filename="controle_presenca_agosto.xlsx"'
+    wb.save(response)
+    return response
+
 # ------------------  PDF  ------------------
 @login_required
 def baixar_historico_geral_pdf(request):

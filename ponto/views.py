@@ -104,35 +104,62 @@ def baixar_historico_geral_excel(request):
     wb.save(response)
     return response
 
+
 @login_required
 def baixar_presenca_excel(request):
-    # Define o mês desejado (agosto neste exemplo)
-    ano = timezone.now().year
-    mes = 8  # agosto
+    registros = filtrar_registros(request)
 
-    registros = RegistroPonto.objects.filter(data__year=ano, data__month=mes)
+    # Filtro manual extra (se necessário)
+    cpf = request.GET.get('cpf', '').strip().replace('.', '').replace('-', '')
+    lider_id = request.GET.get('lider', '').strip()
+    data_inicial = request.GET.get('data_inicial')
+    data_final = request.GET.get('data_final')
 
-    # Agrupa presença por colaborador e dia
+    if cpf and len(cpf) == 11 and cpf.isdigit():
+        registros = registros.filter(colaborador__cpf=cpf)
+
+    if lider_id:
+        registros = registros.filter(colaborador__lider_id=lider_id)
+
+    if data_inicial:
+        try:
+            data_ini = date.fromisoformat(data_inicial)
+            registros = registros.filter(data__gte=data_ini)
+        except ValueError:
+            pass
+
+    if data_final:
+        try:
+            data_fim = date.fromisoformat(data_final)
+            registros = registros.filter(data__lte=data_fim)
+        except ValueError:
+            pass
+
+    # Se nenhuma data foi enviada, assume o mês atual
+    if not data_inicial and not data_final:
+        hoje = localdate()
+        registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
+
+    # Agrupamento das presenças por colaborador e dia
     presencas = defaultdict(lambda: {
         'nome': '',
         'cpf': '',
-        'dias': [''] * 31  # posição 0 = dia 1
+        'dias': [''] * 31
     })
 
     for r in registros:
         dia = r.data.day
         cpf = r.colaborador.cpf
-
         presencas[cpf]['nome'] = r.colaborador.nome
         presencas[cpf]['cpf'] = cpf
-        presencas[cpf]['dias'][dia - 1] = 'S'  # Marca como presente
+        presencas[cpf]['dias'][dia - 1] = 'S'
 
-    # Cria o Excel
+    # Criação do Excel
     wb = Workbook()
     ws = wb.active
     ws.title = "Controle de Presença"
 
-    # Cabeçalho
+    # Cabeçalhos
     headers = ["Funcionário", "CPF"] + [str(d) for d in range(1, 32)]
     ws.append(headers)
 
@@ -140,28 +167,28 @@ def baixar_presenca_excel(request):
         cell.font = Font(bold=True)
         cell.alignment = Alignment(horizontal='center')
 
-    # Preenche dados
+    # Dados das presenças
     for dados in presencas.values():
         linha = [dados['nome'], dados['cpf']] + dados['dias']
         ws.append(linha)
 
-    # Linha de total
+    # Linha de totais por dia
     total_por_dia = ["Total", ""]
     for i in range(31):
         total = sum(1 for dados in presencas.values() if dados['dias'][i] == 'S')
         total_por_dia.append(total)
     ws.append(total_por_dia)
 
-    # Ajuste de largura
+    # Ajuste de largura das colunas
     for col in ws.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
         ws.column_dimensions[col[0].column_letter].width = max_length + 2
 
-    # Geração do Excel como resposta HTTP
+    # Resposta HTTP com o Excel
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
-    response['Content-Disposition'] = 'attachment; filename="controle_presenca_agosto.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="controle_presenca_filtrado.xlsx"'
     wb.save(response)
     return response
 

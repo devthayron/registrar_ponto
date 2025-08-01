@@ -53,7 +53,6 @@
       <h3>Registros para CPF {{ cpf }}</h3>
     {% else %}
       <div style="display: flex; align-items: center; gap: 12px;">
-        <h3 style="margin: 0;">Todos os registros</h3>
         
         <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar PDF">
           <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
@@ -62,9 +61,14 @@
         <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Excel">
         <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
       </a>
-        <form action="{% url 'baixar_presenca_excel' %}" method="get">
-        <button type="submit">📥 Baixar Excel</button>
-    </form>
+<form action="{% url 'baixar_presenca_excel' %}" method="get">
+  <input type="hidden" name="cpf" value="{{ cpf }}">
+  <input type="hidden" name="lider" value="{{ lider }}">
+  <input type="hidden" name="data_inicial" value="{{ data_inicial }}">
+  <input type="hidden" name="data_final" value="{{ data_final }}">
+  <button type="submit">📥 Baixar  Presença</button>
+</form>
+
       </div>
     {% endif %}
 

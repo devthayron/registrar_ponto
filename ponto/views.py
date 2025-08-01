@@ -121,13 +121,13 @@ def baixar_presenca_excel(request):
     })
 
     for r in registros:
-        cpf = r.colaborador.cpf
-        presencas[cpf]['nome'] = r.colaborador.nome
-        presencas[cpf]['cpf'] = cpf
-        presencas[cpf]['contrato'] = getattr(r.colaborador.lider, 'nome', '—')
-        if r.data:
-            dia = r.data.day
-            presencas[cpf]['dias'][dia - 1] = 'S'
+        dia = r.data.day
+        cpf_colaborador = r.colaborador.cpf
+        presencas[cpf_colaborador]['nome'] = r.colaborador.nome
+        presencas[cpf_colaborador]['cpf'] = cpf_colaborador
+        presencas[cpf_colaborador]['contrato'] = getattr(r.colaborador.lider, 'nome', '—')
+        presencas[cpf_colaborador]['dias'][dia - 1] = 'S'
+
 
     wb = Workbook()
     ws = wb.active

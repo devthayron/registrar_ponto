@@ -104,15 +104,24 @@ def baixar_historico_geral_excel(request):
 # ------------------  PDF  ------------------
 @login_required
 def baixar_historico_geral_pdf(request):
+    registros = filtrar_registros(request).order_by('lider_nome', 'data', 'colaborador__nome')
+
+    data_inicial = request.GET.get('data_inicial')
+    data_final = request.GET.get('data_final')
+
+    # Se não vieram, define como data de hoje
     hoje = localdate()
-    registros = filtrar_registros(request).order_by('lider_nome','data','colaborador__nome')
+    if not data_inicial:
+        data_inicial = hoje.strftime('%Y-%m-%d')
+    if not data_final:
+        data_final = hoje.strftime('%Y-%m-%d')
 
     html_string = render_to_string('ponto/pdf_pontos.html', {
         'registros': registros,
-        'cpf': '',
-        'lider': '',
-        'data_inicial': hoje.strftime('%Y-%m-%d'),
-        'data_final': hoje.strftime('%Y-%m-%d'),
+        'cpf': request.GET.get('cpf', ''),
+        'lider': request.GET.get('lider', ''),
+        'data_inicial': data_inicial,
+        'data_final': data_final,
     })
 
     response = HttpResponse(content_type='application/pdf')

@@ -55,7 +55,7 @@
       <div style="display: flex; align-items: center; gap: 12px;">
         <h3 style="margin: 0;">Todos os registros</h3>
         
-        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data={{ data }}" title="Baixar PDF">
+        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar PDF">
           <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
         </a>
 

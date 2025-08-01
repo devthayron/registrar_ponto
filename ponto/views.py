@@ -109,36 +109,10 @@ def baixar_historico_geral_excel(request):
 def baixar_presenca_excel(request):
     registros = filtrar_registros(request)
 
-    cpf = request.GET.get('cpf', '').strip().replace('.', '').replace('-', '')
-    lider_id = request.GET.get('lider', '').strip()
-    data_inicial = request.GET.get('data_inicial')
-    data_final = request.GET.get('data_final')
-
-    if cpf and len(cpf) == 11 and cpf.isdigit():
-        registros = registros.filter(colaborador__cpf=cpf)
-
-    if lider_id:
-        registros = registros.filter(colaborador__lider_id=lider_id)
-
-    if data_inicial:
-        try:
-            data_ini = date.fromisoformat(data_inicial)
-            registros = registros.filter(data__gte=data_ini)
-        except ValueError:
-            pass
-
-    if data_final:
-        try:
-            data_fim = date.fromisoformat(data_final)
-            registros = registros.filter(data__lte=data_fim)
-        except ValueError:
-            pass
-
-    if not data_inicial and not data_final:
+    if not request.GET.get('data_inicial') and not request.GET.get('data_final'):
         hoje = localdate()
         registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
 
-    # Agrupamento
     presencas = defaultdict(lambda: {
         'nome': '',
         'cpf': '',
@@ -147,50 +121,45 @@ def baixar_presenca_excel(request):
     })
 
     for r in registros:
-        dia = r.data.day
         cpf = r.colaborador.cpf
         presencas[cpf]['nome'] = r.colaborador.nome
         presencas[cpf]['cpf'] = cpf
-        presencas[cpf]['contrato'] = getattr(r.colaborador.lider, 'nome', '—')  # ou lider_id se for ID
-        presencas[cpf]['dias'][dia - 1] = 'S'
+        presencas[cpf]['contrato'] = getattr(r.colaborador.lider, 'nome', '—')
+        if r.data:
+            dia = r.data.day
+            presencas[cpf]['dias'][dia - 1] = 'S'
 
-    # Excel
     wb = Workbook()
     ws = wb.active
     ws.title = "Controle de Presença"
 
-    # Cabeçalhos
     headers = ["Funcionário", "CPF", "Contrato"] + [str(d) for d in range(1, 32)]
     ws.append(headers)
-
     for cell in ws[1]:
         cell.font = Font(bold=True)
         cell.alignment = Alignment(horizontal='center')
 
-    # Dados
     for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
         linha = [dados['nome'], dados['cpf'], dados['contrato']] + dados['dias']
         ws.append(linha)
 
-    # Totais
     total_por_dia = ["Total", "", ""]
     for i in range(31):
         total = sum(1 for dados in presencas.values() if dados['dias'][i] == 'S')
         total_por_dia.append(total)
     ws.append(total_por_dia)
 
-    # Largura colunas
     for col in ws.columns:
         max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
         ws.column_dimensions[col[0].column_letter].width = max_length + 2
 
-    # Download
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
-    response['Content-Disposition'] = 'attachment; filename="controle_presenca_filtrado.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="controle_presenca.xlsx"'
     wb.save(response)
     return response
+
 
 # ------------------  PDF  ------------------
 @login_required

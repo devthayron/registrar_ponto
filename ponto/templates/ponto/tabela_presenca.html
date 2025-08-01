@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load dict_filters %}
 {% block content %}
 <style>
   body {
@@ -131,15 +132,21 @@
       </thead>
       <tbody>
         {% for colaborador, presencas in tabela.items %}
-          <tr>
+        <tr>
             <td>{{ colaborador.0 }}</td>
             <td>
-              {{ colaborador.1|slice:":3" }}.{{ colaborador.1|slice:"3:6" }}.{{ colaborador.1|slice:"6:9" }}-{{ colaborador.1|slice:"9:11" }}
+            {{ colaborador.1|slice:":3" }}.{{ colaborador.1|slice:"3:6" }}.{{ colaborador.1|slice:"6:9" }}-{{ colaborador.1|slice:"9:11" }}
             </td>
-            {% for status in presencas %}
-              <td>{% if status == 'S' %}S{% else %}&nbsp;{% endif %}</td>
+            {% for dia in dias %}
+            <td>
+                {% if presencas|get_item:dia == 'S' %}
+                S
+                {% else %}
+                &nbsp;
+                {% endif %}
+            </td>
             {% endfor %}
-          </tr>
+        </tr>
         {% endfor %}
       </tbody>
     </table>

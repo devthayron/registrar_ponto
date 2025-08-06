@@ -91,11 +91,11 @@
         {% endfor %}
       </tbody>
     </table>
-    {% if total_presencas %}
-      <p style="color: #2980b9; text-align: end;" ><strong>Total de presenças:</strong> {{ total_presencas }}</p>
-    {% endif %}
     
     {% include 'paginacao.html' %}
+    {% if total_presencas %}
+      <p style="color: #2980b9; text-align: end; transform: translateY(-41px);" class="presenca"><strong>Total de presenças:</strong> {{ total_presencas }}</p>
+    {% endif %}
     {% elif cpf %}
     <p>Nenhum registro encontrado para o CPF {{ cpf }}.</p>
     {% else %}

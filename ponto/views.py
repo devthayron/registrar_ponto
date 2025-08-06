@@ -108,6 +108,9 @@ def baixar_historico_geral_excel(request):
     wb.save(response)
     return response
 
+# <a href="{% url 'baixar_presenca_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Presença Excel">
+# <button type="button">📥 Baixar Presença</button>
+# </a>
 # baixar presenca 
 # @login_required
 # def baixar_presenca_excel(request):

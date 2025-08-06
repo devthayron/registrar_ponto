@@ -52,16 +52,7 @@
     {% if cpf %}
       <h3>Registros para CPF {{ cpf }}</h3>
     {% else %}
-      <div style="display: flex; align-items: center; gap: 12px;">
-        
-        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar PDF">
-          <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
-        </a>
 
-        <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Excel">
-        <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
-      </a>
-      </div>
     {% endif %}
     <table>
       <thead>
@@ -91,7 +82,14 @@
         {% endfor %}
       </tbody>
     </table>
-    
+      <div style="display: flex; align-items: center; gap: 12px; justify-content:end">
+        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar PDF">
+          <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
+        </a>
+        <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Excel">
+        <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
+      </a>
+      </div>
     {% include 'paginacao.html' %}
     {% if total_presencas %}
       <p style="color: #2980b9; text-align: end; transform: translateY(-41px);" class="presenca"><strong>Total de presenças:</strong> {{ total_presencas }}</p>

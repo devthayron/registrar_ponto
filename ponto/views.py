@@ -109,6 +109,12 @@ def baixar_historico_geral_excel(request):
     return response
 
 
+from collections import defaultdict
+from django.utils.timezone import localdate
+from django.http import HttpResponse
+from openpyxl import Workbook
+from django.contrib.auth.decorators import login_required
+
 @login_required
 def baixar_presenca_excel(request):
     registros = filtrar_registros(request)
@@ -145,21 +151,21 @@ def baixar_presenca_excel(request):
     wb = Workbook(write_only=True)
     ws = wb.create_sheet(title="Controle de Presença")
 
-    # Cabeçalho com apenas os dias com presença
-    headers = ["Funcionário", "CPF", "Contrato"] + [str(d) for d in dias_com_presenca]
+    # Cabeçalho sem CPF
+    headers = ["Funcionário", "Contrato"] + [str(d) for d in dias_com_presenca]
     ws.append(headers)
 
     # Dados por colaborador
     for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
         linha = [
             dados['nome'],
-            dados['cpf'],
+            # dados['cpf'],  # CPF desativado
             dados['contrato'],
         ] + [dados['dias'].get(d, '') for d in dias_com_presenca]
         ws.append(linha)
 
     # Totais por dia
-    total_por_dia = ["Total", "", ""]
+    total_por_dia = ["Total", ""]  # Coluna CPF ignorada, então só 2 fixas
     for d in dias_com_presenca:
         total = sum(1 for dados in presencas.values() if dados['dias'].get(d) == 'S')
         total_por_dia.append(total)
@@ -173,6 +179,7 @@ def baixar_presenca_excel(request):
     wb.save(response)
 
     return response
+
 
 
 

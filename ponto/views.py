@@ -326,6 +326,8 @@ def listar_pontos(request):
         data_hoje = localdate()
         registros = registros.filter(data=data_hoje)
 
+    total_presencas = registros.count()
+    
     registros = registros.order_by('-data', 'lider_nome', '-entrada')
     paginator = Paginator(registros, 7)
     page_number = request.GET.get('page')
@@ -340,5 +342,6 @@ def listar_pontos(request):
         'lideres': lideres,
         'data_inicial': data_inicial,
         'data_final': data_final,
+        'total_presencas': total_presencas,
         'request': request,
     })

@@ -63,7 +63,6 @@
       </a>
       </div>
     {% endif %}
-
     <table>
       <thead>
         <tr>
@@ -79,9 +78,9 @@
         <tr>
           <td>
             {% if r.colaborador and r.colaborador.cpf %}
-              {{ r.colaborador.cpf|slice:":3" }}.{{ r.colaborador.cpf|slice:"3:6" }}.{{ r.colaborador.cpf|slice:"6:9"}}-{{ r.colaborador.cpf|slice:"9:11" }}
+            {{ r.colaborador.cpf|slice:":3" }}.{{ r.colaborador.cpf|slice:"3:6" }}.{{ r.colaborador.cpf|slice:"6:9"}}-{{ r.colaborador.cpf|slice:"9:11" }}
             {% else %}
-              -
+            -
             {% endif %}
           </td>
           <td>{{ r.colaborador.nome|default:"-" }}</td>
@@ -92,30 +91,33 @@
         {% endfor %}
       </tbody>
     </table>
-
+    {% if total_presencas %}
+      <p style="color: #2980b9; text-align: end;" ><strong>Total de presenças:</strong> {{ total_presencas }}</p>
+    {% endif %}
+    
     {% include 'paginacao.html' %}
-  {% elif cpf %}
+    {% elif cpf %}
     <p>Nenhum registro encontrado para o CPF {{ cpf }}.</p>
-  {% else %}
+    {% else %}
     <p>Nenhum registro encontrado.</p>
-  {% endif %}
-
-  <script>
-    const cpfBusca = document.getElementById("cpf");
-
-    cpfBusca.addEventListener("input", function (e) {
-      let value = e.target.value;
-
-      // Remove tudo que não for número
-      value = value.replace(/\D/g, "");
-
-      // Limita a 11 caracteres
-      value = value.substring(0, 11);
-
-      // Aplica a máscara do CPF: 000.000.000-00
-      if (value.length > 9) {
-        value = value.replace(
-          /^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/,
+    {% endif %}
+    
+    <script>
+      const cpfBusca = document.getElementById("cpf");
+      
+      cpfBusca.addEventListener("input", function (e) {
+        let value = e.target.value;
+        
+        // Remove tudo que não for número
+        value = value.replace(/\D/g, "");
+        
+        // Limita a 11 caracteres
+        value = value.substring(0, 11);
+        
+        // Aplica a máscara do CPF: 000.000.000-00
+        if (value.length > 9) {
+          value = value.replace(
+            /^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/,
           "$1.$2.$3-$4"
         );
       } else if (value.length > 6) {

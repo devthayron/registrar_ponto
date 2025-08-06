@@ -171,111 +171,71 @@ def baixar_presenca_excel(request):
 
 # ------------------  PDF  ------------------
 @login_required
-def baixar_historico_geral_pdf(request):
-    registros = filtrar_registros(request).order_by('lider_nome', 'data', 'colaborador__nome')
+def baixar_presenca_excel(request):
+    registros = filtrar_registros(request)
 
-    data_inicial = request.GET.get('data_inicial')
-    data_final = request.GET.get('data_final')
+    # Verifique se as datas estão corretamente configuradas, se não, filtra pelo mês atual
+    if not request.GET.get('data_inicial') and not request.GET.get('data_final'):
+        hoje = localdate()
+        registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
 
-    # Se não vieram, define como data de hoje
-    hoje = localdate()
-    if not data_inicial:
-        data_inicial = hoje.strftime('%Y-%m-%d')
-    if not data_final:
-        data_final = hoje.strftime('%Y-%m-%d')
-
-    html_string = render_to_string('ponto/pdf_pontos.html', {
-        'registros': registros,
-        'cpf': request.GET.get('cpf', ''),
-        'lider': request.GET.get('lider', ''),
-        'data_inicial': data_inicial,
-        'data_final': data_final,
+    # Criando um dicionário para armazenar as presenças dos colaboradores
+    presencas = defaultdict(lambda: {
+        'nome': '',
+        'cpf': '',
+        'contrato': '',
+        'dias': [''] * 31  # Inicializa 31 dias
     })
 
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename=historico_geral_ponto.pdf'
+    # Preenchendo as presenças de cada colaborador
+    for r in registros:
+        dia = r.data.day
+        cpf_colaborador = r.colaborador.cpf
+        presencas[cpf_colaborador]['nome'] = r.colaborador.nome
+        presencas[cpf_colaborador]['cpf'] = cpf_colaborador
+        lider = r.colaborador.lider
+        presencas[cpf_colaborador]['contrato'] = lider.nome if lider else '—'
+        presencas[cpf_colaborador]['dias'][dia - 1] = 'S'  # Marca a presença para o dia correto
 
-    pisa_status = pisa.CreatePDF(html_string, dest=response)
+    # Criando a planilha Excel
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Controle de Presença"
 
-    if pisa_status.err:
-        return HttpResponse('Erro ao gerar PDF', status=500)
+    # Cabeçalho: Funcionário, CPF, Contrato + Dias de 1 a 31
+    headers = ["Funcionário", "CPF", "Contrato"] + [str(d) for d in range(1, 32)]  # 31 colunas para os dias
+    ws.append(headers)
+
+    # Formatando o cabeçalho
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+        cell.alignment = Alignment(horizontal='center')
+
+    # Adicionando as presenças de cada colaborador
+    for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
+        linha = [dados['nome'], dados['cpf'], dados['contrato']] + dados['dias']  # Adiciona os 31 dias
+        ws.append(linha)
+
+    # Calculando os totais de presença por dia
+    total_por_dia = ["Total", "", ""]  # A primeira célula vai mostrar "Total"
+    for i in range(31):
+        total = sum(1 for dados in presencas.values() if dados['dias'][i] == 'S')  # Conta as presenças por dia
+        total_por_dia.append(total)  # Adiciona o total para o dia
+    ws.append(total_por_dia)
+
+    # Ajustando a largura das colunas
+    for col in ws.columns:
+        max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
+        ws.column_dimensions[col[0].column_letter].width = max_length + 2
+
+    # Preparando a resposta para download do arquivo
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    response['Content-Disposition'] = 'attachment; filename="controle_presenca.xlsx"'
+    wb.save(response)
 
     return response
-
-
-
-# ------------------  Login  ------------------
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            if user.nivel == 'gerente':
-                return redirect('listar_pontos')  
-            else:
-                return redirect('registrar_ponto')  
-        else:
-            messages.error(request, 'Usuário ou senha incorretos.')
-
-    return render(request, 'ponto/login.html')
-
-# ------------------  logout  ------------------
-@login_required
-def logout_view(request):
-    logout(request)
-    return redirect('login')
-
-
-# ------------------ Registro ------------------
-@login_required
-def registrar_ponto(request):
-    if request.method == 'POST':
-        cpf = request.POST.get('cpf', '').strip()
-        cpf_limpo = cpf.replace('.', '').replace('-', '')
-
-        if not (cpf_limpo.isdigit() and len(cpf_limpo) == 11):
-            messages.error(request, 'CPF inválido. Informe exatamente 11 dígitos numéricos.')
-            return redirect('registrar_ponto')
-
-        colaborador = Colaborador.objects.filter(cpf=cpf_limpo).first()
-        if not colaborador:
-            messages.error(request, 'CPF não cadastrado no sistema. Contate o administrador.')
-            return redirect('registrar_ponto')
-
-        hoje = timezone.localdate()
-        agora = timezone.now()
-
-        try:
-            registro, created = RegistroPonto.objects.get_or_create(
-                colaborador=colaborador,
-                data=hoje
-            )
-
-            # Se a entrada já foi registrada, não registra novamente
-            if registro.entrada:
-                messages.error(request, 'Entrada já registrada para hoje.')
-                return redirect('registrar_ponto')
-
-            # Bloqueio por tempo para evitar múltiplos registros rápidos
-            intervalo = timedelta(seconds=10)
-            if registro.entrada and (agora - registro.entrada) < intervalo:
-                messages.error(request, 'Leitura ignorada: entrada já registrada recentemente.')
-                return redirect('registrar_ponto')
-
-            # Registrar apenas a entrada
-            registro.entrada = agora
-            registro.save()
-            messages.success(request, 'Entrada registrada com sucesso!')
-
-        except Exception as e:
-            messages.error(request, f'Erro ao registrar entrada: {e}')
-
-        return redirect('registrar_ponto')
-
-    return render(request, 'ponto/registrar_ponto.html')
 
 
 

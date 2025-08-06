@@ -108,79 +108,71 @@ def baixar_historico_geral_excel(request):
     wb.save(response)
     return response
 
+# baixar presenca 
+# @login_required
+# def baixar_presenca_excel(request):
+#     registros = filtrar_registros(request)
 
-from collections import defaultdict
-from django.utils.timezone import localdate
-from django.http import HttpResponse
-from openpyxl import Workbook
-from django.contrib.auth.decorators import login_required
+#     data_inicial = request.GET.get('data_inicial')
+#     data_final = request.GET.get('data_final')
 
-@login_required
-def baixar_presenca_excel(request):
-    registros = filtrar_registros(request)
+#     if data_inicial and data_final:
+#         registros = registros.filter(data__range=[data_inicial, data_final])
+#     else:
+#         hoje = localdate()
+#         registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
 
-    data_inicial = request.GET.get('data_inicial')
-    data_final = request.GET.get('data_final')
+#     # Obter dias únicos com presença (ordenados)
+#     dias_com_presenca = sorted(set(r.data.day for r in registros))
 
-    if data_inicial and data_final:
-        registros = registros.filter(data__range=[data_inicial, data_final])
-    else:
-        hoje = localdate()
-        registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
+#     presencas = defaultdict(lambda: {
+#         'nome': '',
+#         'cpf': '',
+#         'contrato': '',
+#         'dias': {}
+#     })
 
-    # Obter dias únicos com presença (ordenados)
-    dias_com_presenca = sorted(set(r.data.day for r in registros))
+#     for r in registros:
+#         dia = r.data.day
+#         cpf_colaborador = r.colaborador.cpf
+#         presencas[cpf_colaborador]['nome'] = r.colaborador.nome
+#         presencas[cpf_colaborador]['cpf'] = cpf_colaborador
+#         lider = r.colaborador.lider
+#         presencas[cpf_colaborador]['contrato'] = lider.nome if lider else '—'
+#         presencas[cpf_colaborador]['dias'][dia] = 'S'
 
-    presencas = defaultdict(lambda: {
-        'nome': '',
-        'cpf': '',
-        'contrato': '',
-        'dias': {}
-    })
+#     # Criar planilha em modo write_only para performance
+#     wb = Workbook(write_only=True)
+#     ws = wb.create_sheet(title="Controle de Presença")
 
-    for r in registros:
-        dia = r.data.day
-        cpf_colaborador = r.colaborador.cpf
-        presencas[cpf_colaborador]['nome'] = r.colaborador.nome
-        presencas[cpf_colaborador]['cpf'] = cpf_colaborador
-        lider = r.colaborador.lider
-        presencas[cpf_colaborador]['contrato'] = lider.nome if lider else '—'
-        presencas[cpf_colaborador]['dias'][dia] = 'S'
+#     # Cabeçalho sem CPF
+#     headers = ["Funcionário", "Contrato"] + [str(d) for d in dias_com_presenca]
+#     ws.append(headers)
 
-    # Criar planilha em modo write_only para performance
-    wb = Workbook(write_only=True)
-    ws = wb.create_sheet(title="Controle de Presença")
+#     # Dados por colaborador
+#     for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
+#         linha = [
+#             dados['nome'],
+#             # dados['cpf'],  # CPF desativado
+#             dados['contrato'],
+#         ] + [dados['dias'].get(d, '') for d in dias_com_presenca]
+#         ws.append(linha)
 
-    # Cabeçalho sem CPF
-    headers = ["Funcionário", "Contrato"] + [str(d) for d in dias_com_presenca]
-    ws.append(headers)
+#     # Totais por dia
+#     total_por_dia = ["Total", ""]  # Coluna CPF ignorada, então só 2 fixas
+#     for d in dias_com_presenca:
+#         total = sum(1 for dados in presencas.values() if dados['dias'].get(d) == 'S')
+#         total_por_dia.append(total)
+#     ws.append(total_por_dia)
 
-    # Dados por colaborador
-    for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
-        linha = [
-            dados['nome'],
-            # dados['cpf'],  # CPF desativado
-            dados['contrato'],
-        ] + [dados['dias'].get(d, '') for d in dias_com_presenca]
-        ws.append(linha)
+#     # Preparar resposta para download direto
+#     response = HttpResponse(
+#         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+#     )
+#     response['Content-Disposition'] = 'attachment; filename="controle_presenca.xlsx"'
+#     wb.save(response)
 
-    # Totais por dia
-    total_por_dia = ["Total", ""]  # Coluna CPF ignorada, então só 2 fixas
-    for d in dias_com_presenca:
-        total = sum(1 for dados in presencas.values() if dados['dias'].get(d) == 'S')
-        total_por_dia.append(total)
-    ws.append(total_por_dia)
-
-    # Preparar resposta para download direto
-    response = HttpResponse(
-        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    )
-    response['Content-Disposition'] = 'attachment; filename="controle_presenca.xlsx"'
-    wb.save(response)
-
-    return response
-
-
+#     return response
 
 
 # ------------------  PDF  ------------------

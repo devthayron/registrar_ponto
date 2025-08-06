@@ -122,11 +122,14 @@ def baixar_presenca_excel(request):
         hoje = localdate()
         registros = registros.filter(data__month=hoje.month, data__year=hoje.year)
 
+    # Obter dias únicos com presença (ordenados)
+    dias_com_presenca = sorted(set(r.data.day for r in registros))
+
     presencas = defaultdict(lambda: {
         'nome': '',
         'cpf': '',
         'contrato': '',
-        'dias': [''] * 31
+        'dias': {}
     })
 
     for r in registros:
@@ -136,25 +139,29 @@ def baixar_presenca_excel(request):
         presencas[cpf_colaborador]['cpf'] = cpf_colaborador
         lider = r.colaborador.lider
         presencas[cpf_colaborador]['contrato'] = lider.nome if lider else '—'
-        presencas[cpf_colaborador]['dias'][dia - 1] = 'S'
+        presencas[cpf_colaborador]['dias'][dia] = 'S'
 
     # Criar planilha em modo write_only para performance
     wb = Workbook(write_only=True)
     ws = wb.create_sheet(title="Controle de Presença")
 
-    # Cabeçalho
-    headers = ["Funcionário", "CPF", "Contrato"] + [str(d) for d in range(1, 32)]
+    # Cabeçalho com apenas os dias com presença
+    headers = ["Funcionário", "CPF", "Contrato"] + [str(d) for d in dias_com_presenca]
     ws.append(headers)
 
     # Dados por colaborador
     for dados in sorted(presencas.values(), key=lambda x: x['contrato']):
-        linha = [dados['nome'], dados['cpf'], dados['contrato']] + dados['dias']
+        linha = [
+            dados['nome'],
+            dados['cpf'],
+            dados['contrato'],
+        ] + [dados['dias'].get(d, '') for d in dias_com_presenca]
         ws.append(linha)
 
     # Totais por dia
     total_por_dia = ["Total", "", ""]
-    for i in range(31):
-        total = sum(1 for dados in presencas.values() if dados['dias'][i] == 'S')
+    for d in dias_com_presenca:
+        total = sum(1 for dados in presencas.values() if dados['dias'].get(d) == 'S')
         total_por_dia.append(total)
     ws.append(total_por_dia)
 
@@ -166,6 +173,7 @@ def baixar_presenca_excel(request):
     wb.save(response)
 
     return response
+
 
 
 # ------------------  PDF  ------------------

@@ -1,6 +1,5 @@
 <div class="paginacao">
-  {% if page_obj.has_other_pages %}
-    {% comment %} Gera a URL base com os filtros atuais (sem duplicar 'page') {% endcomment %}
+
     {% with request.GET.urlencode as query %}
       {% with query|cut:'page='|cut:'&page=' as filtered_query %}
         {% if page_obj.has_previous %}
@@ -24,5 +23,5 @@
         {% endif %}
       {% endwith %}
     {% endwith %}
-  {% endif %}
+
 </div>

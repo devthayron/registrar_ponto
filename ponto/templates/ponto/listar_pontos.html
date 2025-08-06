@@ -82,7 +82,7 @@
         {% endfor %}
       </tbody>
     </table>
-      <div style="display: flex; align-items: center; gap: 12px; justify-content:end">
+      <div style="display: flex; align-items: center; gap: 12px; justify-content:end; transform: translateY(40px)">
         <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar PDF">
           <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
         </a>

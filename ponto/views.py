@@ -21,6 +21,19 @@ import uuid
 from django.http import JsonResponse
 from openpyxl import Workbook
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
+from django.views.decorators.http import require_http_methods
+from django.core.serializers import serialize, deserialize
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
+from django.urls import reverse
+from django.shortcuts import render
+from django.contrib import messages
+import json
+
+from .models import Colaborador, Lider, RegistroPonto
+
+
+
 # ------------------  Usuário  ------------------
 User = get_user_model()
 
@@ -345,3 +358,40 @@ def listar_pontos(request):
         'total_presencas': total_presencas,
         'request': request,
     })
+
+# ------------------  Admin-exportar json  ------------------
+
+@staff_member_required
+def exportar_json_admin(request):
+    dados = {
+        'lideres': json.loads(serialize('json', Lider.objects.all())),
+        'colaboradores': json.loads(serialize('json', Colaborador.objects.all())),
+        'registros': json.loads(serialize('json', RegistroPonto.objects.all())),
+    }
+    response = JsonResponse(dados, safe=False)
+    response['Content-Disposition'] = 'attachment; filename=backup_dados.json'
+    return response
+
+
+# ------------------  Admin-importar json  ------------------
+@staff_member_required
+@require_http_methods(["GET", "POST"])
+def importar_json_admin(request):
+    if request.method == "POST":
+        json_file = request.FILES.get("json_file")
+        if not json_file:
+            messages.error(request, "Nenhum arquivo enviado.")
+            return HttpResponseRedirect(reverse("admin:index"))
+
+        try:
+            dados = json.load(json_file)
+            for model_key in ['lideres', 'colaboradores', 'registros']:
+                for obj_data in dados.get(model_key, []):
+                    for obj in deserialize("json", json.dumps([obj_data])):
+                        obj.save()
+            messages.success(request, "Dados importados com sucesso.")
+        except Exception as e:
+            messages.error(request, f"Erro ao importar: {e}")
+        return HttpResponseRedirect(reverse("admin:index"))
+
+    return render(request, "admin/importar_json.html")

@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="gerente-container">
-  <h2>Consultar Registros</h2>
+
 
 <form method="get" autocomplete="off">
   <label for="cpf">CPF:</label>
@@ -22,7 +22,7 @@
 
   <label for="lider">Contrato:</label>
   <select name="lider" id="lider" class="dropdown">
-    <option value="" {% if not lider %}selected{% endif %}>Selecionar Contratos</option>
+    <option value="" {% if not lider %}selected{% endif %}>Todos</option>
     {% for l in lideres %}
       <option value="{{ l.id }}" {% if l.id|stringformat:"s" == lider %}selected{% endif %}>{{ l.nome }}</option>
     {% endfor %}

@@ -1,0 +1,6050 @@
+{
+  "lideres": [
+    {
+      "model": "ponto.lider",
+      "pk": 2,
+      "fields": {
+        "nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.lider",
+      "pk": 3,
+      "fields": {
+        "nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.lider",
+      "pk": 4,
+      "fields": {
+        "nome": "Expedição TDC"
+      }
+    }
+  ],
+  "colaboradores": [
+    {
+      "model": "ponto.colaborador",
+      "pk": 3,
+      "fields": {
+        "cpf": "03988995339",
+        "nome": "Andre Moura dos Santos",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 4,
+      "fields": {
+        "cpf": "00456302328",
+        "nome": "Antonio Luis Alves Pereira",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 5,
+      "fields": {
+        "cpf": "04753373363",
+        "nome": "Daniel da Silva",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 6,
+      "fields": {
+        "cpf": "05879547361",
+        "nome": "Diego da Silva Barros",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 7,
+      "fields": {
+        "cpf": "61905512384",
+        "nome": "Francisco Gustavo da Silva",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 8,
+      "fields": {
+        "cpf": "00520448316",
+        "nome": "Jamilson Nascimento dos Santos",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 9,
+      "fields": {
+        "cpf": "08820518309",
+        "nome": "Jhonata da Silva Santos",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 10,
+      "fields": {
+        "cpf": "42908019434",
+        "nome": "Jose Bartolomeu Cezario Ribeiro",
+        "lider": 2,
+        "is_active": false
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 11,
+      "fields": {
+        "cpf": "45056250368",
+        "nome": "Jose Ribamar Marques dos Santos",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 12,
+      "fields": {
+        "cpf": "06664198339",
+        "nome": "Leonardo Ferreira do Nascimento",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 13,
+      "fields": {
+        "cpf": "00940953374",
+        "nome": "Manoel Goiano da Silva Junior",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 14,
+      "fields": {
+        "cpf": "62670875300",
+        "nome": "Mario Salazar de Oliveira",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 15,
+      "fields": {
+        "cpf": "99690381334",
+        "nome": "Raimundo dos Santos Silva",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 16,
+      "fields": {
+        "cpf": "10188572309",
+        "nome": "Thaylson Francisco Alves",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 17,
+      "fields": {
+        "cpf": "03717824309",
+        "nome": "Sergio Fernandes de Moura Oliveira",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 18,
+      "fields": {
+        "cpf": "07916847337",
+        "nome": "Evandro Lopes Carneiro",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 19,
+      "fields": {
+        "cpf": "09461266316",
+        "nome": "Natanael Pereira De Sousa",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 20,
+      "fields": {
+        "cpf": "04622671301",
+        "nome": "Artur Fernando Da Silva Sousa",
+        "lider": 2,
+        "is_active": false
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 21,
+      "fields": {
+        "cpf": "10223318337",
+        "nome": "Charles Henrique Oliveira Da Cunha",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 22,
+      "fields": {
+        "cpf": "63331727318",
+        "nome": "Jose Edson Da Silva Nascimento",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 23,
+      "fields": {
+        "cpf": "00945925352",
+        "nome": "Mauro Machado De Araujo",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 25,
+      "fields": {
+        "cpf": "05276757330",
+        "nome": "Gilson da Silva Sousa",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 26,
+      "fields": {
+        "cpf": "09743303375",
+        "nome": "Thayron",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 27,
+      "fields": {
+        "cpf": "07401506343",
+        "nome": "Erik Nauã Pereira Da Silva",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 28,
+      "fields": {
+        "cpf": "06604866360",
+        "nome": "Bruno Da Silva Sousa Leao",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 29,
+      "fields": {
+        "cpf": "07126681364",
+        "nome": "Cosmo Pereira Do Nascimento",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 30,
+      "fields": {
+        "cpf": "64397734372",
+        "nome": "Fabiano Linhares De Sousa",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 31,
+      "fields": {
+        "cpf": "05101384380",
+        "nome": "Iran Marques Alves",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 32,
+      "fields": {
+        "cpf": "07045011393",
+        "nome": "Joao De Sousa Neto",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 33,
+      "fields": {
+        "cpf": "09826771384",
+        "nome": "Ryan Santos Da Cunha",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 34,
+      "fields": {
+        "cpf": "04985235350",
+        "nome": "Sergio Pereira Dos Santos Netto",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 35,
+      "fields": {
+        "cpf": "01747471364",
+        "nome": "Antonio Gregorio Da Cruz Silva",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 36,
+      "fields": {
+        "cpf": "06618253373",
+        "nome": "Lucas Ferreira Brito",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 37,
+      "fields": {
+        "cpf": "05683850398",
+        "nome": "Joao Pedro Viera Macedo",
+        "lider": 2,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 38,
+      "fields": {
+        "cpf": "63639159373",
+        "nome": "Marcos Guilherme Leal Alves",
+        "lider": 4,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 39,
+      "fields": {
+        "cpf": "34126988300",
+        "nome": "Francisco Das Chagas Dos Santos Macedo",
+        "lider": 4,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 40,
+      "fields": {
+        "cpf": "61953651305",
+        "nome": "Carlos Henrique Leite",
+        "lider": 4,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 41,
+      "fields": {
+        "cpf": "01503550338",
+        "nome": "Jonas de Jesus de Sousa",
+        "lider": 4,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 42,
+      "fields": {
+        "cpf": "39593916334",
+        "nome": "Jose Carlos Mendes da Silva",
+        "lider": 3,
+        "is_active": true
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 43,
+      "fields": {
+        "cpf": "63588693378",
+        "nome": "Felipe Da Silva Lopes",
+        "lider": 4,
+        "is_active": true
+      }
+    }
+  ],
+  "registros": [
+    {
+      "model": "ponto.registroponto",
+      "pk": 2,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:29:04.172Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 3,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:29:16.324Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 4,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:29:23.351Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 5,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:29:37.601Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 6,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:29:46.220Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 7,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:29:53.062Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 8,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:33:21.452Z",
+        "saida": null,
+        "lider_nome": ""
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 9,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T12:33:25.852Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 10,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-03",
+        "entrada": "2025-07-03T16:00:00Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 11,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:50:56.188Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 12,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:00.791Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 13,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:04.492Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 14,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:07.999Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 15,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:11.403Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 16,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:15.265Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 17,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:18.666Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 18,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:21.852Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 19,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:25.141Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 20,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:28.473Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 21,
+      "fields": {
+        "colaborador": 20,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:32.242Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 22,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:51:35.663Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 23,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T10:53:12.107Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 24,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T11:10:00.322Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 25,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-04",
+        "entrada": "2025-07-04T11:13:20.334Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 28,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:42:51.537Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 29,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:42:59.479Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 30,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:02.975Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 31,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:07.341Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 32,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:11.521Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 33,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:14.907Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 34,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:20.667Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 35,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:23.986Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 36,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:36.533Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 37,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:41.780Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 38,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:45.228Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 39,
+      "fields": {
+        "colaborador": 20,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:43:54.943Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 40,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:44:09.582Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 41,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:44:15.072Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 42,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-07",
+        "entrada": "2025-07-07T10:45:44.346Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 43,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:46:47.685Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 44,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:46:54.483Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 45,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:00.060Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 46,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:04.437Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 47,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:07.683Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 48,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:12.869Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 49,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:16.085Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 50,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:20.526Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 51,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:26.319Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 52,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:31.723Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 53,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:37.007Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 54,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:41.298Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 55,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T10:47:45.543Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 56,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-08",
+        "entrada": "2025-07-08T17:00:00Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 57,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:05.323Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 58,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:12.062Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 59,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:16.594Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 60,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:21.010Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 61,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:25.034Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 62,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:29.327Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 63,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:37.012Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 64,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:41.357Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 65,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:47.059Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 66,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:51.222Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 67,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:54.918Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 68,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:00:58.652Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 69,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:01:02.167Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 70,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-09",
+        "entrada": "2025-07-09T11:28:31.168Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 71,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:18.285Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 72,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:23.237Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 73,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:27.894Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 74,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:32.229Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 75,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:36.822Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 76,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:40.937Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 77,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:51:45.893Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 78,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:52:00.512Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 79,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:52:12.320Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 80,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:52:19.782Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 81,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T10:52:25.880Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 82,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T11:32:31.371Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 83,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T11:32:37.028Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 87,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-10",
+        "entrada": "2025-07-10T16:26:06.067Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 88,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:42:48.883Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 89,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:42:53.467Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 90,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:42:56.796Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 91,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:00.250Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 92,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:03.224Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 93,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:06.359Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 94,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:09.600Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 95,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:13.053Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 96,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:20.726Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 97,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:26.777Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 98,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:32.041Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 99,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:41.905Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 100,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:43:45.985Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 101,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:46:23.589Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 102,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-11",
+        "entrada": "2025-07-11T10:46:34.934Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 103,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:28.505Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 104,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:32.010Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 105,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:35.166Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 106,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:38.205Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 107,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:43.889Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 108,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:48.400Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 109,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:52.706Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 110,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:55.811Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 111,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:51:59.138Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 112,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:52:02.759Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 113,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:52:07.025Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 114,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:52:10.121Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 115,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:52:12.992Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 116,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:53:32.437Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 117,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-14",
+        "entrada": "2025-07-14T10:56:30.835Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 118,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:56:28.577Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 119,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:56:32.132Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 120,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:56:37.605Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 121,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:56:44.634Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 122,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:03.682Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 123,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:06.740Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 124,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:14.197Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 125,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:17.298Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 126,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:20.492Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 127,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:23.053Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 128,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:28.410Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 129,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:36.176Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 130,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:46.129Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 131,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:51.482Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 132,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-15",
+        "entrada": "2025-07-15T10:57:54.309Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 133,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:54:34.252Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 134,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:54:48.487Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 135,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:55:06.437Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 136,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:55:17.647Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 137,
+      "fields": {
+        "colaborador": 10,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:55:39.281Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 138,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:56:06.938Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 139,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:56:20.982Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 140,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:56:40.040Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 141,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:56:54.048Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 142,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:57:05.705Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 143,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:57:21.171Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 144,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:57:40.956Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 145,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:57:56.611Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 146,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-16",
+        "entrada": "2025-07-16T10:58:10.837Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 147,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:58:31.578Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 148,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:58:36.754Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 149,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:58:43.648Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 150,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:58:48.812Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 151,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:58:55.090Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 152,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:04.849Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 153,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:08.277Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 154,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:26.057Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 155,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:29.115Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 156,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:34.463Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 157,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:40.061Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 158,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:45.461Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 159,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:51.367Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 160,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-17",
+        "entrada": "2025-07-17T10:59:55.007Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 161,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:02:55.615Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 162,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:02:59.974Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 163,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:06.278Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 164,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:13.664Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 165,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:17.509Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 166,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:20.262Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 167,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:26.510Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 168,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:30.843Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 169,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:35.114Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 170,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:38.184Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 171,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:41.949Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 172,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:47.676Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 173,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-18",
+        "entrada": "2025-07-18T11:03:57.350Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 174,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:05:42.882Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 175,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:05:47.317Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 176,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:05:53.191Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 177,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:06:01.521Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 178,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:06:06.246Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 179,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:06:09.649Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 180,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:06:23.939Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 181,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:06:29.378Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 182,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:06:46.068Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 183,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:07:02.301Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 184,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:07:05.470Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 185,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:07:08.740Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 186,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-21",
+        "entrada": "2025-07-21T11:07:12.083Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 187,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:32.335Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 188,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:36.297Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 189,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:40.481Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 190,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:44.624Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 191,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:48.365Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 192,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:52.062Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 193,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:55.229Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 194,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:09:58.736Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 195,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:10:01.921Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 196,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:10:05.575Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 197,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:10:08.808Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 198,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:10:12.269Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 199,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-22",
+        "entrada": "2025-07-22T11:10:15.567Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 200,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:36:28.142Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 201,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:36:33.240Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 202,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:36:36.521Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 203,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:36:41.703Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 204,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:36:52.889Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 205,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:36:56.976Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 206,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:02.544Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 207,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:06.173Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 208,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:13.078Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 209,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:21.246Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 210,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:26.764Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 211,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:37.631Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 212,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:43.738Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 213,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-23",
+        "entrada": "2025-07-23T11:37:50.990Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 214,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:22.737Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 215,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:25.920Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 216,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:28.888Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 217,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:34.149Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 218,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:39.588Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 219,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:45.362Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 220,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:48.547Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 221,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:51.084Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 222,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:54.297Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 223,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:55:57.612Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 224,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:56:00.492Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 225,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:56:05.035Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 226,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:56:10.550Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 227,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:56:16.595Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 228,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-24",
+        "entrada": "2025-07-24T10:56:19.974Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 229,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:32:32.878Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 230,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:32:37.342Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 231,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:32:40.904Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 232,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:32:43.969Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 233,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:32:54.066Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 234,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:32:58.614Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 235,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:01.426Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 236,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:06.629Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 237,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:18.147Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 238,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:28.128Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 239,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:33.447Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 240,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:37.697Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 241,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:42.892Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 242,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-25",
+        "entrada": "2025-07-25T11:33:48.295Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 243,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:09.989Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 244,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:13.215Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 245,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:16.912Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 246,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:20.644Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 247,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:29.682Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 248,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:32.931Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 249,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:36.470Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 250,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:39.655Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 251,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:43.797Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 252,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:46.682Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 253,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:51.848Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 254,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:01:57.150Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 255,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:02:00.358Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 256,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:02:04.417Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 257,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-28",
+        "entrada": "2025-07-28T11:02:07.702Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 258,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:09.808Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 259,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:13.203Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 260,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:24.883Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 261,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:29.145Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 262,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:32.281Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 263,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:35.380Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 264,
+      "fields": {
+        "colaborador": 6,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:38.409Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 265,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:41.247Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 266,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:44.032Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 267,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:46.844Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 268,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:49.598Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 269,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:53.661Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 270,
+      "fields": {
+        "colaborador": 19,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:19:57.394Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 271,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:20:00.682Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 272,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-29",
+        "entrada": "2025-07-29T12:20:03.747Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 273,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:03.373Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 274,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:22.548Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 275,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:28.065Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 276,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:35.848Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 277,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:41.456Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 278,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:46.800Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 279,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:50:57.305Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 280,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:51:04.175Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 281,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:51:10.706Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 282,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:51:17.067Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 283,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:51:20.083Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 284,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:51:29.967Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 285,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-30",
+        "entrada": "2025-07-30T11:51:36.669Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 286,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:30.625Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 287,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:34.344Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 288,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:37.543Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 289,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:41.266Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 290,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:46.949Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 291,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:50.974Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 292,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:54.152Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 293,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:45:59.754Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 294,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:46:04.175Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 295,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:46:07.033Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 296,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:46:15.475Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 297,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-07-31",
+        "entrada": "2025-07-31T11:46:20.236Z",
+        "saida": null,
+        "lider_nome": "Expedição - TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 298,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T10:46:35.758Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 299,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T10:46:54.294Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 300,
+      "fields": {
+        "colaborador": 31,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T10:47:03.404Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 301,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T10:47:07.900Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 302,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T10:47:23.237Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 303,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T10:47:35.984Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 304,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:33.715Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 305,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:38.239Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 306,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:43.369Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 307,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:46.350Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 308,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:49.028Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 309,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:52.186Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 310,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:02:55.523Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 311,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:03:00.776Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 312,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:03:03.459Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 313,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:03:11.225Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 314,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:03:14.353Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 315,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:03:19.903Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 316,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:06:10.576Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 317,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:12:13.853Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 318,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:26:48.835Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 319,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T11:51:37.246Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 320,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T13:21:47.158Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 321,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T13:22:27.738Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 322,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:48:36.709Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 323,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:48:45.109Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 324,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:48:56.586Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 325,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:49:04.347Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 326,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:49:13.284Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 327,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:49:20.462Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 328,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:49:30.452Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 329,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:49:36.222Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 330,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:50:01.571Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 331,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T10:50:09.869Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 332,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:01:41.932Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 333,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:01:44.542Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 334,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:01:51.084Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 335,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:01:54.193Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 336,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:01:58.052Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 337,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:02:04.451Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 338,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:02:09.378Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 339,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:00.902Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 340,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:09.948Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 341,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:20.984Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 342,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:26.162Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 343,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:41.872Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 344,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:51.975Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 345,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T11:19:57.579Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 346,
+      "fields": {
+        "colaborador": 38,
+        "data": "2025-08-04",
+        "entrada": "2025-08-04T19:00:53.028Z",
+        "saida": null,
+        "lider_nome": "Expedição TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 347,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:50:50.656Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 348,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:50:54.030Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 349,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:50:57.301Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 350,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:01.804Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 351,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:09.423Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 352,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:12.067Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 353,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:19.274Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 354,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:22.032Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 355,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:27.604Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 356,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:31.700Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 357,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:35.312Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 358,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:38.917Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 359,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:51:42.586Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 360,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:58:17.924Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 361,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:58:30.692Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 362,
+      "fields": {
+        "colaborador": 31,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:58:56.303Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 363,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T10:59:14.580Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 364,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:00:21.746Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 365,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:00:42.337Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 366,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:00:47.225Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 367,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:01:00.313Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 368,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:01:06.222Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 369,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:01:13.794Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 370,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:01:19.996Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 371,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:57:56.174Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 372,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:01.926Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 373,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:05.469Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 374,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:08.790Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 375,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:11.731Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 376,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:15.655Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 377,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:19.115Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 378,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:21.694Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 379,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:25.858Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 380,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:29.417Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 381,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:31.973Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 382,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:36.538Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 383,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T10:58:39.657Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 384,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:00:57.188Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 385,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:05.145Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 386,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:11.037Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 387,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:16.554Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 388,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:20.946Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 389,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:34.724Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 390,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:39.108Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 391,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:44.135Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 392,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:01:50.632Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 393,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:15:33.989Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 394,
+      "fields": {
+        "colaborador": 39,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T11:48:16.663Z",
+        "saida": null,
+        "lider_nome": "Expedição TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 395,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-06",
+        "entrada": "2025-08-06T15:25:22.102Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 396,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:51:49.493Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 397,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:51:57.258Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 398,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:03.025Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 399,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:15.866Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 400,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:20.619Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 401,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:26.542Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 402,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:32.089Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 403,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:38.511Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 404,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:45.072Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 405,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T10:52:50.232Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 406,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:00.539Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 407,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:12.220Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 408,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:16.484Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 409,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:19.833Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 410,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:23.545Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 411,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:29.930Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 412,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:33.529Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 413,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:37.089Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 414,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:42.899Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 415,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:49.537Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 416,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:52.238Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 417,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:55.832Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 418,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:27:58.905Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 419,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:28:01.721Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 420,
+      "fields": {
+        "colaborador": 39,
+        "data": "2025-08-07",
+        "entrada": "2025-08-07T12:33:27.299Z",
+        "saida": null,
+        "lider_nome": "Expedição TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 421,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:02:13.614Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 422,
+      "fields": {
+        "colaborador": 31,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:02:23.746Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 423,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:02:29.011Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 424,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:02:42.881Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 425,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:02:48.134Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 426,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:02:53.746Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 427,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:03:11.816Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 428,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:03:18.786Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 429,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:03:45.556Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 430,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:27.059Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 431,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:32.344Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 432,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:35.188Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 433,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:39.469Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 434,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:42.542Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 435,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:46.839Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 436,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:49.968Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 437,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:52.941Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 438,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:19:57.100Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 439,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:20:00.025Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 440,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:20:02.636Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 441,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:20:06.299Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 442,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:20:10.121Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 443,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:20:13.139Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 444,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:23:46.896Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 445,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-08",
+        "entrada": "2025-08-08T11:39:58.535Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 446,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-05",
+        "entrada": "2025-08-05T11:00:00Z",
+        "saida": "2025-08-05T11:00:00Z",
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 447,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:07:32.608Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 448,
+      "fields": {
+        "colaborador": 31,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:07:38.882Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 449,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:07:45.926Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 450,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:07:55.719Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 451,
+      "fields": {
+        "colaborador": 17,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:08:34.205Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 452,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:08:42.386Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 453,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T13:08:50.337Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 454,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 455,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 456,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 457,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 458,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 459,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 460,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 461,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 462,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 463,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 464,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 465,
+      "fields": {
+        "colaborador": 27,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 466,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 467,
+      "fields": {
+        "colaborador": 41,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T10:52:35Z",
+        "saida": null,
+        "lider_nome": "Expedição TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 468,
+      "fields": {
+        "colaborador": 40,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T10:52:48Z",
+        "saida": null,
+        "lider_nome": "Expedição TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 469,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:54:50.832Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 470,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:54:53.599Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 471,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:54:57.638Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 472,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:55:01.653Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 473,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:55:07.984Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 474,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:55:25.153Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 475,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:25:40.367Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 476,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:25:51.024Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 477,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:25:59.363Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 478,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:03.075Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 479,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:06.748Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 480,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:11.352Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 481,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:16.846Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 482,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:31.504Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 483,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:38.125Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 484,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:48.978Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 485,
+      "fields": {
+        "colaborador": 31,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:26:55.296Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 486,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:27:01.840Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 487,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:27:07.210Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 488,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:27:14.324Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 489,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:27:20.901Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 490,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:27:38.124Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 491,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T11:27:44.686Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 492,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-11",
+        "entrada": "2025-08-11T11:30:00Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 493,
+      "fields": {
+        "colaborador": 42,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:37:14Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 495,
+      "fields": {
+        "colaborador": 43,
+        "data": "2025-08-12",
+        "entrada": "2025-08-12T10:47:33Z",
+        "saida": null,
+        "lider_nome": "Expedição TDC"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 496,
+      "fields": {
+        "colaborador": 33,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:52:09.932Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 497,
+      "fields": {
+        "colaborador": 30,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:52:17.203Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 498,
+      "fields": {
+        "colaborador": 36,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:52:31.510Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 499,
+      "fields": {
+        "colaborador": 34,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:53:00.408Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 500,
+      "fields": {
+        "colaborador": 4,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:53:24.290Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 501,
+      "fields": {
+        "colaborador": 32,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:53:36.156Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 502,
+      "fields": {
+        "colaborador": 28,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:53:44.944Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 503,
+      "fields": {
+        "colaborador": 35,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:53:51.529Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 504,
+      "fields": {
+        "colaborador": 29,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:54:03.871Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 505,
+      "fields": {
+        "colaborador": 23,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T10:59:56.493Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 506,
+      "fields": {
+        "colaborador": 13,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:00:08.149Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 507,
+      "fields": {
+        "colaborador": 21,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:00:16.164Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 508,
+      "fields": {
+        "colaborador": 5,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:00:28.587Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 509,
+      "fields": {
+        "colaborador": 14,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:00:36.553Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 510,
+      "fields": {
+        "colaborador": 18,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:00:42.700Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 511,
+      "fields": {
+        "colaborador": 37,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:00:55.350Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 512,
+      "fields": {
+        "colaborador": 3,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:01:06.011Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 513,
+      "fields": {
+        "colaborador": 22,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:01:10.713Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 514,
+      "fields": {
+        "colaborador": 25,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:01:18.554Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 515,
+      "fields": {
+        "colaborador": 15,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:01:29.061Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 516,
+      "fields": {
+        "colaborador": 11,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:01:36.019Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 517,
+      "fields": {
+        "colaborador": 8,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:01:41.775Z",
+        "saida": null,
+        "lider_nome": "Abastecimento THE"
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 518,
+      "fields": {
+        "colaborador": 31,
+        "data": "2025-08-13",
+        "entrada": "2025-08-13T11:16:54.134Z",
+        "saida": null,
+        "lider_nome": "ASG"
+      }
+    }
+  ]
+}

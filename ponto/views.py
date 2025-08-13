@@ -335,7 +335,7 @@ def listar_pontos(request):
     total_presencas = registros.count()
     
     registros = registros.order_by('-data', 'lider_nome', '-entrada')
-    paginator = Paginator(registros, 7)
+    paginator = Paginator(registros, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     lideres = Lider.objects.all()
@@ -400,8 +400,12 @@ def formulario_view(request):
         cpf = request.POST.get('cpf')
         nome = request.POST.get('nome')
         lider_id = request.POST.get('lider')
-        is_active = request.POST.get('is_active') == 'ativo'
-
+        is_active_raw = request.POST.get('is_active') == 'ativo'
+        if is_active_raw is None: 
+            is_active = True 
+        else: 
+            is_active = is_active_raw == 'ativo'
+ 
         lider = Lider.objects.filter(id=lider_id).first() if lider_id else None
 
         if 'buscar' in request.POST:

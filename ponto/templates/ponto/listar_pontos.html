@@ -20,21 +20,30 @@
     oninput="this.value = this.value.replace(/[^0-9.-]/g, '').slice(0,14);"
   />
 
-  <label for="lider">Líderes:</label>
+  <label for="lider">Contrato:</label>
   <select name="lider" id="lider" class="dropdown">
-    <option value="" {% if not lider %}selected{% endif %}>Selecionar Líderes</option>
+    <option value="" {% if not lider %}selected{% endif %}>Selecionar Contratos</option>
     {% for l in lideres %}
       <option value="{{ l.id }}" {% if l.id|stringformat:"s" == lider %}selected{% endif %}>{{ l.nome }}</option>
     {% endfor %}
   </select>
 
-      <label for="data">Data:</label>
+    <label for="data_inicial">Data Inicial:</label>
     <input class="dropdown data"
       type="date"
-      id="data"
-      name="data"
-      value="{{ data|default:'' }}"
+      id="data_inicial"
+      name="data_inicial"
+      value="{{ data_inicial|default:'' }}"
     />
+
+    <label for="data_final">Data Final:</label>
+    <input class="dropdown data"
+      type="date"
+      id="data_final"
+      name="data_final"
+      value="{{ data_final|default:'' }}"
+    />
+
   <button type="submit">Buscar</button>
   <a href="{% url 'listar_pontos' %}">Limpar</a>
 </form>
@@ -43,19 +52,8 @@
     {% if cpf %}
       <h3>Registros para CPF {{ cpf }}</h3>
     {% else %}
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <h3 style="margin: 0;">Todos os registros</h3>
-        
-        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data={{ data }}" title="Baixar PDF">
-          <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
-        </a>
 
-        <a href="{% url 'baixar_historico_geral_excel' %}" title="Baixar Excel">
-          <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
-        </a>
-      </div>
     {% endif %}
-
     <table>
       <thead>
         <tr>
@@ -63,7 +61,7 @@
           <th>Nome</th>
           <th>Data</th>
           <th>Entrada</th>
-          <th>Líder</th>
+          <th>Contrato</th>
         </tr>
       </thead>
       <tbody>
@@ -71,9 +69,9 @@
         <tr>
           <td>
             {% if r.colaborador and r.colaborador.cpf %}
-              {{ r.colaborador.cpf|slice:":3" }}.{{ r.colaborador.cpf|slice:"3:6" }}.{{ r.colaborador.cpf|slice:"6:9"}}-{{ r.colaborador.cpf|slice:"9:11" }}
+            {{ r.colaborador.cpf|slice:":3" }}.{{ r.colaborador.cpf|slice:"3:6" }}.{{ r.colaborador.cpf|slice:"6:9"}}-{{ r.colaborador.cpf|slice:"9:11" }}
             {% else %}
-              -
+            -
             {% endif %}
           </td>
           <td>{{ r.colaborador.nome|default:"-" }}</td>
@@ -84,30 +82,40 @@
         {% endfor %}
       </tbody>
     </table>
-
+      <div style="display: flex; align-items: center; gap: 12px; justify-content:end; transform: translateY(40px)">
+        <a href="{% url 'baixar_historico_geral_pdf' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar PDF">
+          <img src="{% static 'img/pdf-icon.jpg' %}" alt="PDF" style="height: 32px;">
+        </a>
+        <a href="{% url 'baixar_historico_geral_excel' %}?cpf={{ cpf }}&lider={{ lider }}&data_inicial={{ data_inicial }}&data_final={{ data_final }}" title="Baixar Excel">
+        <img src="{% static 'img/excel-logo.png' %}" alt="Excel" style="height: 37px;">
+      </a>
+      </div>
     {% include 'paginacao.html' %}
-  {% elif cpf %}
+    {% if total_presencas %}
+      <p style="color: #2980b9; text-align: end; transform: translateY(-41px);" class="presenca"><strong>Total de presenças:</strong> {{ total_presencas }}</p>
+    {% endif %}
+    {% elif cpf %}
     <p>Nenhum registro encontrado para o CPF {{ cpf }}.</p>
-  {% else %}
+    {% else %}
     <p>Nenhum registro encontrado.</p>
-  {% endif %}
-
-  <script>
-    const cpfBusca = document.getElementById("cpf");
-
-    cpfBusca.addEventListener("input", function (e) {
-      let value = e.target.value;
-
-      // Remove tudo que não for número
-      value = value.replace(/\D/g, "");
-
-      // Limita a 11 caracteres
-      value = value.substring(0, 11);
-
-      // Aplica a máscara do CPF: 000.000.000-00
-      if (value.length > 9) {
-        value = value.replace(
-          /^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/,
+    {% endif %}
+    
+    <script>
+      const cpfBusca = document.getElementById("cpf");
+      
+      cpfBusca.addEventListener("input", function (e) {
+        let value = e.target.value;
+        
+        // Remove tudo que não for número
+        value = value.replace(/\D/g, "");
+        
+        // Limita a 11 caracteres
+        value = value.substring(0, 11);
+        
+        // Aplica a máscara do CPF: 000.000.000-00
+        if (value.length > 9) {
+          value = value.replace(
+            /^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/,
           "$1.$2.$3-$4"
         );
       } else if (value.length > 6) {

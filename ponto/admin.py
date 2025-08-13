@@ -2,6 +2,12 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import UsuarioPersonalizado, RegistroPonto, Colaborador, Lider
 from django.utils.translation import gettext_lazy as _
+from django.utils.html import format_html
+from django.urls import reverse
+from django.contrib import admin
+from django.contrib.admin import AdminSite
+from django.contrib.admin import site as admin_site
+from .models import Cadastro
 
 @admin.register(UsuarioPersonalizado)
 class UsuarioPersonalizadoAdmin(UserAdmin):
@@ -42,7 +48,11 @@ class LiderAdmin(admin.ModelAdmin):
 class ColaboradorAdmin(admin.ModelAdmin):
     list_display = ('cpf_formatado', 'nome', 'lider')
     search_fields = ('cpf', 'nome')
-    list_filter = ('lider',)  
+    list_filter = ('lider','is_active')  
+    
+    # def get_queryset(self, request):
+    #     qs = super().get_queryset(request)
+    #     return qs.filter(is_active=True)  # filtra só ativos
 
     def cpf_formatado(self, obj):
         cpf = obj.cpf
@@ -94,3 +104,31 @@ class RegistroPontoAdmin(admin.ModelAdmin):
                 reg.save()
 
         super().save_model(request, obj, form, change)
+
+# Hook para adicionar os botões no dashboard padrão
+# Guarda o método index original
+original_admin_index = AdminSite.index
+
+def custom_admin_index(self, request, extra_context=None):
+    if extra_context is None:
+        extra_context = {}
+
+    if request.user.is_staff:
+        extra_context['extra_buttons'] = format_html("""
+            <div style="margin: 20px 0;">
+                <a class="button" href="{}">📤 Exportar Dados JSON</a>
+                <a class="button" href="{}">📥 Importar Dados JSON</a>
+            </div>
+        """, reverse("exportar_json_admin"), reverse("importar_json_admin"))
+
+    # Chama o método original corretamente com os 3 argumentos
+    return original_admin_index(self, request, extra_context=extra_context)
+
+admin.site.index = custom_admin_index.__get__(admin.site, AdminSite)
+
+# @admin.register(Colaborador)
+# class ColaboradorAdmin(admin.ModelAdmin):
+#     list_display = ('cpf', 'nome', 'lider', 'is_active')
+#     search_fields = ('cpf', 'nome')
+
+# admin.site.register(Lider)

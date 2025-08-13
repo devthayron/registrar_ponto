@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.admin import site as admin_site
-
+from .models import Cadastro
 
 @admin.register(UsuarioPersonalizado)
 class UsuarioPersonalizadoAdmin(UserAdmin):
@@ -126,3 +126,9 @@ def custom_admin_index(self, request, extra_context=None):
 
 admin.site.index = custom_admin_index.__get__(admin.site, AdminSite)
 
+# @admin.register(Colaborador)
+# class ColaboradorAdmin(admin.ModelAdmin):
+#     list_display = ('cpf', 'nome', 'lider', 'is_active')
+#     search_fields = ('cpf', 'nome')
+
+# admin.site.register(Lider)

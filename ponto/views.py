@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -8,19 +8,12 @@ from .models import RegistroPonto, Colaborador, Lider
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 from xhtml2pdf import pisa
-from datetime import datetime
 from openpyxl.styles import Font, Alignment
 from openpyxl import Workbook
 from datetime import timedelta,date
 from django.utils.timezone import localdate
-from calendar import monthrange
-from collections import defaultdict
-from django.db.models.functions import TruncMonth
-import os
-import uuid
 from django.http import JsonResponse
 from openpyxl import Workbook
-from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.http import require_http_methods
 from django.core.serializers import serialize, deserialize
@@ -29,7 +22,7 @@ from django.urls import reverse
 from django.shortcuts import render
 from django.contrib import messages
 import json
-
+from django.shortcuts import render
 from .models import Colaborador, Lider, RegistroPonto
 
 
@@ -225,8 +218,8 @@ def baixar_historico_geral_pdf(request):
     return response
 
 
-
 # ------------------  Login  ------------------
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -395,3 +388,52 @@ def importar_json_admin(request):
         return HttpResponseRedirect(reverse("admin:index"))
 
     return render(request, "admin/importar_json.html")
+
+    
+@user_passes_test(is_gerente)
+def formulario_view(request):
+    mensagem = ''
+    colaborador = None
+    lideres = Lider.objects.all()  # para preencher o select
+
+    if request.method == 'POST':
+        cpf = request.POST.get('cpf')
+        nome = request.POST.get('nome')
+        lider_id = request.POST.get('lider')
+        is_active = request.POST.get('is_active') == 'ativo'
+
+        lider = Lider.objects.filter(id=lider_id).first() if lider_id else None
+
+        if 'buscar' in request.POST:
+            colaborador = Colaborador.objects.filter(cpf=cpf).first()
+            if not colaborador: 
+                mensagem = 'Colaborador não encontrado.'
+
+        elif 'cadastrar' in request.POST:
+            if Colaborador.objects.filter(cpf=cpf).exists():
+                mensagem = 'Este CPF já está cadastrado.'
+            else:
+                Colaborador.objects.create(
+                    cpf=cpf,
+                    nome=nome,
+                    lider=lider,
+                    is_active=is_active
+                )
+                mensagem = 'Colaborador cadastrado com sucesso!'
+
+        elif 'editar' in request.POST:
+            colaborador = Colaborador.objects.filter(cpf=cpf).first()
+            if colaborador:
+                colaborador.nome = nome
+                colaborador.lider = lider
+                colaborador.is_active = is_active
+                colaborador.save()
+                mensagem = 'Colaborador atualizado com sucesso!'
+            else:
+                mensagem = 'Colaborador não encontrado para edição.'
+
+    return render(request, 'ponto/formulario.html', {
+        'mensagem': mensagem,
+        'colaborador': colaborador,
+        'lideres': lideres
+    })

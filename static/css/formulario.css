@@ -1,0 +1,53 @@
+body {
+    background-color: #f0f4f8;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #3498db;
+    box-shadow: none;
+}
+
+.search-btn {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+}
+
+.search-btn:hover {
+    background-color: #1c6690;
+}
+
+.btn-primary {
+    background-color: #2980b9;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1c6690;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* Altera a cor de todos os botões do formulário */
+button, .btn {
+    background-color: #2980b9 !important;
+    border-color: #2980b9 !important;
+    color: white !important;
+}

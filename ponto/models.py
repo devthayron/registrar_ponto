@@ -29,10 +29,10 @@ class Colaborador(models.Model):
         on_delete=models.SET_NULL,
         related_name='colaboradores'
     )
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.nome} ({self.cpf})' if self.nome else self.cpf
-
 
 class RegistroPonto(models.Model):
     colaborador = models.ForeignKey(
@@ -62,3 +62,22 @@ class RegistroPonto(models.Model):
 
     def __str__(self):
         return f"{self.colaborador.cpf} - {self.data}"
+    
+class Cadastro(models.Model):
+    CPF_CHOICES = [
+        ('THE', 'THE'),
+        ('Recebimento', 'Recebimento'),
+    ]
+
+    STATUS_CHOICES = [
+        ('ativo', 'Ativo'),
+        ('inativo', 'Inativo'),
+    ]
+
+    cpf = models.CharField(max_length=14, unique=True)
+    nome = models.CharField(max_length=100)
+    lider = models.CharField(max_length=20, choices=CPF_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="ativo")
+
+    def __str__(self):
+        return f"{self.nome} ({self.cpf})"

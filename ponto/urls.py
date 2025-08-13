@@ -8,4 +8,8 @@ urlpatterns = [
     path('listar/', views.listar_pontos, name='listar_pontos'),
     path('historico-geral/pdf/', views.baixar_historico_geral_pdf, name='baixar_historico_geral_pdf'),
     path('historico-geral/Excel/', views.baixar_historico_geral_excel, name='baixar_historico_geral_excel'),
+    path('admin/exportar-json/', views.exportar_json_admin, name='exportar_json_admin'),
+    path('admin/importar-json/', views.importar_json_admin, name='importar_json_admin'),
+    path('formulario/', views.formulario_view, name='formulario'),
+    # path('baixar-excel/', views.baixar_presenca_excel, name='baixar_presenca_excel'),
 ]

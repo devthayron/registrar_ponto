@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -8,19 +8,12 @@ from .models import RegistroPonto, Colaborador, Lider
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 from xhtml2pdf import pisa
-from datetime import datetime
 from openpyxl.styles import Font, Alignment
 from openpyxl import Workbook
 from datetime import timedelta,date
 from django.utils.timezone import localdate
-from calendar import monthrange
-from collections import defaultdict
-from django.db.models.functions import TruncMonth
-import os
-import uuid
 from django.http import JsonResponse
 from openpyxl import Workbook
-from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.http import require_http_methods
 from django.core.serializers import serialize, deserialize
@@ -31,7 +24,11 @@ from django.contrib import messages
 import json
 from django.shortcuts import render
 from .models import Colaborador, Lider, RegistroPonto
-from .models import Cadastro
+import qrcode
+import io
+import base64
+from django.shortcuts import render
+from django.http import HttpResponseBadRequest
 
 
 # ------------------  Usuário  ------------------
@@ -225,8 +222,8 @@ def baixar_historico_geral_pdf(request):
     return response
 
 
-
 # ------------------  Login  ------------------
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -342,7 +339,7 @@ def listar_pontos(request):
     total_presencas = registros.count()
     
     registros = registros.order_by('-data', 'lider_nome', '-entrada')
-    paginator = Paginator(registros, 7)
+    paginator = Paginator(registros, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     lideres = Lider.objects.all()
@@ -396,9 +393,8 @@ def importar_json_admin(request):
 
     return render(request, "admin/importar_json.html")
 
-from django.shortcuts import render
-from .models import Colaborador, Lider
-
+    
+@user_passes_test(is_gerente)
 def formulario_view(request):
     mensagem = ''
     colaborador = None
@@ -408,13 +404,17 @@ def formulario_view(request):
         cpf = request.POST.get('cpf')
         nome = request.POST.get('nome')
         lider_id = request.POST.get('lider')
-        is_active = request.POST.get('is_active') == 'ativo'
-
+        is_active_raw = request.POST.get('is_active') == 'ativo'
+        if is_active_raw is None: 
+            is_active = True 
+        else: 
+            is_active = is_active_raw == 'ativo'
+ 
         lider = Lider.objects.filter(id=lider_id).first() if lider_id else None
 
         if 'buscar' in request.POST:
             colaborador = Colaborador.objects.filter(cpf=cpf).first()
-            if not colaborador:
+            if not colaborador: 
                 mensagem = 'Colaborador não encontrado.'
 
         elif 'cadastrar' in request.POST:
@@ -444,4 +444,38 @@ def formulario_view(request):
         'mensagem': mensagem,
         'colaborador': colaborador,
         'lideres': lideres
+    })
+
+def formulario_etiqueta(request):
+    """Exibe o formulário"""
+    return render(request, "ponto/formulario.html")
+
+def gerar_etiqueta(request):
+    """Gera o QR Code e exibe na página de etiqueta"""
+    nome = request.GET.get('nome', '').strip()
+    cpf = request.GET.get('cpf', '').strip()
+
+    # Validação simples
+    if not nome or len(cpf) != 11 or not cpf.isdigit():
+        return HttpResponseBadRequest("Nome ou CPF inválido. O CPF deve ter 11 dígitos numéricos.")
+
+    # Texto que será codificado no QR Code
+    conteudo_qr = cpf
+
+    # Criar QR Code
+    qr = qrcode.QRCode(version=1, box_size=10, border=4)
+    qr.add_data(conteudo_qr)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Converter imagem para base64
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+    # Enviar para o template
+    return render(request, "ponto/etiqueta.html", {
+        "nome": nome,
+        "cpf": cpf,
+        "qr_code": qr_base64
     })

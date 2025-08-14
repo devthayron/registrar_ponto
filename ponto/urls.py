@@ -11,5 +11,6 @@ urlpatterns = [
     path('admin/exportar-json/', views.exportar_json_admin, name='exportar_json_admin'),
     path('admin/importar-json/', views.importar_json_admin, name='importar_json_admin'),
     path('formulario/', views.formulario_view, name='formulario'),
+    path('etiqueta/', views.gerar_etiqueta, name='gerar_etiqueta'),
     # path('baixar-excel/', views.baixar_presenca_excel, name='baixar_presenca_excel'),
 ]

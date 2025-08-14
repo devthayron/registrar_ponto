@@ -192,16 +192,17 @@ h3 img {
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fff;
-  padding: 1.0rem 3rem;
+  padding: 0rem 3rem;
   border-radius: 14px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
 }
 
 header h1 {
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #34495e;
+  margin-bottom: 1rem;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -317,7 +318,7 @@ thead th:last-child {
 }
 
 tbody td {
-  padding: 1rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   border-bottom: 1px solid #ecf0f1;
   color: #34495e;
   font-weight: 500;
@@ -737,3 +738,69 @@ label {
   background-color: #0056b3;
 }
 
+.teste {
+  color: white;
+  background-color: #005fa3;
+  padding: 15px 20px;
+}
+
+/* Linha principal do header */
+.teste .topo-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* garante que o título esteja no centro */
+  position: relative;
+}
+
+/* Imagem + Bem-vindo no canto esquerdo */
+.teste .bem-vindo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  left: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.teste .bem-vindo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+/* Título central */
+.teste h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Navegação no canto direito */
+.navegacao {
+  position: absolute;
+  right: 20px;
+}
+
+.navegacao .lista {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navegacao a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navegacao a:hover {
+  color: rgb(255, 187, 0);
+  text-decoration: underline;
+}

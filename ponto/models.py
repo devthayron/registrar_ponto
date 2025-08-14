@@ -77,7 +77,7 @@ class Cadastro(models.Model):
     cpf = models.CharField(max_length=14, unique=True)
     nome = models.CharField(max_length=100)
     lider = models.CharField(max_length=20, choices=CPF_CHOICES)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="ativo")
 
     def __str__(self):
         return f"{self.nome} ({self.cpf})"

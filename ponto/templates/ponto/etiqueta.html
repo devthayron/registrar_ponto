@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Etiqueta</title>
+    <style>
+         body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        margin: 0;
+        background: white;
+      }
+
+      .cartao, .qr-code {
+        width: 180px;
+        padding: 0px;
+        text-align: center;
+        border-radius: 8px;
+        transform: translateY(-10px);
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+
+      img {
+        width: 180px;
+      }
+
+      .qr-code {
+        margin-top: 10px;
+      }
+
+      @media print {
+        body {
+          margin: 0;
+          background: white;
+        }
+
+        .cartao {
+          box-shadow: none;
+          border: none;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="cartao">
+        <h2>{{ nome }}</h2>
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+        </div>
+    </div>
+</body>
+</html>

@@ -24,7 +24,11 @@ from django.contrib import messages
 import json
 from django.shortcuts import render
 from .models import Colaborador, Lider, RegistroPonto
-
+import qrcode
+import io
+import base64
+from django.shortcuts import render
+from django.http import HttpResponseBadRequest
 
 
 # ------------------  Usuário  ------------------
@@ -440,4 +444,38 @@ def formulario_view(request):
         'mensagem': mensagem,
         'colaborador': colaborador,
         'lideres': lideres
+    })
+
+def formulario_etiqueta(request):
+    """Exibe o formulário"""
+    return render(request, "ponto/formulario.html")
+
+def gerar_etiqueta(request):
+    """Gera o QR Code e exibe na página de etiqueta"""
+    nome = request.GET.get('nome', '').strip()
+    cpf = request.GET.get('cpf', '').strip()
+
+    # Validação simples
+    if not nome or len(cpf) != 11 or not cpf.isdigit():
+        return HttpResponseBadRequest("Nome ou CPF inválido. O CPF deve ter 11 dígitos numéricos.")
+
+    # Texto que será codificado no QR Code
+    conteudo_qr = cpf
+
+    # Criar QR Code
+    qr = qrcode.QRCode(version=1, box_size=10, border=4)
+    qr.add_data(conteudo_qr)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Converter imagem para base64
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+    # Enviar para o template
+    return render(request, "ponto/etiqueta.html", {
+        "nome": nome,
+        "cpf": cpf,
+        "qr_code": qr_base64
     })

@@ -20,8 +20,8 @@
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
                 <div class="botao-group">
-                    <input type="text" id="cpf" name="cpf" class="form-control" placeholder="Digite o CPF"
-                        value="{{ colaborador.cpf|default:'' }}">
+                    <input maxlength="14" minlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" type="text" id="cpf" name="cpf" class="form-control" placeholder="Digite o CPF"
+                        value ="{{ colaborador.cpf|default:'' }}"  required autofocus>
                     <button class="botao" type="submit" name="buscar">🔍</button>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite o nome completo"
-                    value="{{ colaborador.nome|default:'' }}">
+                    value="{{ colaborador.nome|default:'' }}" required>
             </div>
 
             <div class="row mb-3">
@@ -70,4 +70,52 @@
         </form>
     </div>
 </div>
+
+<script>
+  const cpfInput = document.getElementById('cpf');
+  const pontoForm = document.getElementById('pontoForm');
+
+  cpfInput.addEventListener('input', function (e) {
+    let value = e.target.value;
+
+    // Remove tudo que não for número
+    value = value.replace(/\D/g, '');
+
+    // Limita a 11 dígitos
+    value = value.substring(0, 11);
+
+    // Aplica máscara
+    if (value.length > 9) {
+      value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/, '$1.$2.$3-$4');
+    } else if (value.length > 6) {
+      value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, '$1.$2.$3');
+    } else if (value.length > 3) {
+      value = value.replace(/^(\d{3})(\d{0,3}).*/, '$1.$2');
+    }
+
+    e.target.value = value;
+
+    // Envia automaticamente ao completar CPF (com máscara)
+    if (value.length === 14) {
+      pontoForm.submit();
+    }
+  });
+
+  // Oculta mensagens após o tempo determinado
+  window.addEventListener('DOMContentLoaded', function () {
+    const mensagens = document.querySelectorAll('.messages p');
+
+    mensagens.forEach((msg) => {
+      // Verifica se a mensagem é de erro
+      const isErro = msg.classList.contains('erro');
+      const tempo = isErro ? 3000 : 1000;  // 3 segundos para erro, 1 segundo para sucesso
+
+      // Esconde a mensagem após o tempo definido
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, tempo);
+    });
+  });
+</script>
+
 {% endblock %}

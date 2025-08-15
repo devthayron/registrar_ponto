@@ -64,3 +64,31 @@ button,
   align-items: center;
   gap: 5px;
 }
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+}
+
+.btn-etiqueta {
+    background-color: #2980b9 !important;
+    border: none;
+    border-radius: 0 0 10px 10px; /* cantos inferiores arredondados */
+    padding: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    width: calc(100% + 4rem); /* ocupa toda largura do card + padding */
+    margin: 16px -2rem -4rem -2rem; /* “empurra” o botão até encostar no limite */
+}

@@ -480,6 +480,7 @@ form {
   gap: 8px;
   margin-top: 2rem;
   flex-wrap: wrap;
+  z-index: 1;
 }
 
 .paginacao a.page-link,

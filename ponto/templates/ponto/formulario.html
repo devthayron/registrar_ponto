@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
-    <title>Formulário de Cadastro</title>
+<title>Formulário de Cadastro adriano</title>
 
 {% block content %}
-
 <link rel="stylesheet" href="{% static 'css/formulario.css' %}" />
+
 <div class="container">
     <div class="form-container">
         <h2 class="text-center text-dark mb-4">Cadastro de Usuário</h2>
+        
         <form method="post">
             {% csrf_token %}
 
@@ -50,7 +49,7 @@
                     <label for="is_active" class="form-label">Status</label>
                     <select name="is_active" id="is_active" class="form-select">
                         <option value="ativo" {% if colaborador and colaborador.is_active %}selected{% endif %}>Ativo</option>
-                        <option value="inativo" {% if not colaborador and colaborador.is_active %}selected{% endif %}>Inativo</option>
+                        <option value="inativo" {% if colaborador and not colaborador.is_active %}selected{% endif %}>Inativo</option>
                     </select>
                 </div>
             </div>
@@ -59,11 +58,16 @@
                 <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
                 <button type="submit" name="editar" class="btn btn-warning">Editar</button>
             </div>
+
+            {% if colaborador %}
+                <a href="/etiqueta/?nome={{ colaborador.nome|urlencode }}&cpf={{ colaborador.cpf|urlencode }}" 
+                    target="_blank" 
+                    class="btn btn-primary btn-etiqueta">
+                    ETIQUETA
+                </a>
+            {% endif %}
+
         </form>
     </div>
 </div>
-
 {% endblock %}
-
-
-

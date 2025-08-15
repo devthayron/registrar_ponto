@@ -404,11 +404,9 @@ def formulario_view(request):
         cpf = request.POST.get('cpf')
         nome = request.POST.get('nome')
         lider_id = request.POST.get('lider')
-        is_active_raw = request.POST.get('is_active') == 'ativo'
-        if is_active_raw is None: 
-            is_active = True 
-        else: 
-            is_active = is_active_raw == 'ativo'
+        is_active_raw = request.POST.get('is_active')
+
+        is_active = (is_active_raw == 'ativo')
  
         lider = Lider.objects.filter(id=lider_id).first() if lider_id else None
 

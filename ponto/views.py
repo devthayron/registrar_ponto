@@ -404,7 +404,7 @@ def formulario_view(request):
         cpf = request.POST.get('cpf')
         nome = request.POST.get('nome')
         lider_id = request.POST.get('lider')
-        is_active_raw = request.POST.get('is_active')
+        is_active_raw = request.POST.get('is_active', 'ativo')
 
         is_active = (is_active_raw == 'ativo')
  

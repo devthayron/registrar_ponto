@@ -73,44 +73,41 @@
 
 <script>
   const cpfInput = document.getElementById('cpf');
-  const pontoForm = document.getElementById('pontoForm');
 
-  cpfInput.addEventListener('input', function (e) {
-    let value = e.target.value;
+  if (cpfInput) {
+    cpfInput.addEventListener('input', function (e) {
+      let value = e.target.value;
 
-    // Remove tudo que não for número
-    value = value.replace(/\D/g, '');
+      // Remove tudo que não for número
+      value = value.replace(/\D/g, '');
 
-    // Limita a 11 dígitos
-    value = value.substring(0, 11);
+      // Limita a 11 dígitos
+      value = value.substring(0, 11);
 
-    // Aplica máscara
-    if (value.length > 9) {
-      value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/, '$1.$2.$3-$4');
-    } else if (value.length > 6) {
-      value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, '$1.$2.$3');
-    } else if (value.length > 3) {
-      value = value.replace(/^(\d{3})(\d{0,3}).*/, '$1.$2');
-    }
+      // Aplica máscara
+      if (value.length > 9) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/, '$1.$2.$3-$4');
+      } else if (value.length > 6) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, '$1.$2.$3');
+      } else if (value.length > 3) {
+        value = value.replace(/^(\d{3})(\d{0,3}).*/, '$1.$2');
+      }
 
-    e.target.value = value;
+      e.target.value = value;
 
-    // Envia automaticamente ao completar CPF (com máscara)
-    if (value.length === 14) {
-      pontoForm.submit();
-    }
-  });
+      // ❌ Aqui NÃO deve submeter automaticamente
+      // ❌ Evite: pontoForm.submit(); — pois não queremos envio automático nesse formulário
+    });
+  }
 
-  // Oculta mensagens após o tempo determinado
+  // Se quiser ocultar mensagens (se você tiver mensagens no template)
   window.addEventListener('DOMContentLoaded', function () {
     const mensagens = document.querySelectorAll('.messages p');
 
     mensagens.forEach((msg) => {
-      // Verifica se a mensagem é de erro
       const isErro = msg.classList.contains('erro');
-      const tempo = isErro ? 3000 : 1000;  // 3 segundos para erro, 1 segundo para sucesso
+      const tempo = isErro ? 3000 : 1000;
 
-      // Esconde a mensagem após o tempo definido
       setTimeout(() => {
         msg.style.display = 'none';
       }, tempo);

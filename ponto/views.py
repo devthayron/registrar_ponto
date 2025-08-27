@@ -225,6 +225,12 @@ def baixar_historico_geral_pdf(request):
 # ------------------  Login  ------------------
 
 def login_view(request):
+    if request.user.is_authenticated:
+        if request.user.nivel == 'gerente':
+            return redirect('listar_pontos')
+        else:
+            return redirect('registrar_ponto')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')

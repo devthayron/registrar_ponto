@@ -43,11 +43,18 @@
 
         <h1>Sistema de Registro de Pontos</h1>
 
+        {% if request.user.nivel == 'gerente' %}
         <nav class="navegacao">
           <ul class="lista">
             <li><a href="{% url 'registrar_ponto' %}">Registrar ponto</a></li>
             <li><a href="{% url 'listar_pontos' %}">Listar pontos</a></li>
             <li><a href="{% url 'formulario' %}">Cadastro</a></li>
+            <li class="sair"><a href="{% url 'logout' %}">Sair</a></li>
+          </ul>
+        </nav>
+        {% endif %}
+        <nav class="navegacao">
+          <ul class="lista">
             <li class="sair"><a href="{% url 'logout' %}">Sair</a></li>
           </ul>
         </nav>

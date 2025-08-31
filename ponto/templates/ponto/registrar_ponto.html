@@ -13,19 +13,25 @@
 
   <form method="post" class="ponto-form" id="pontoForm" autocomplete="off">
     {% csrf_token %}
+    
+    {% if request.user.nivel == 'gerente' %}
+      <!-- Gerente pode escolher data e hora -->
+      <div class="time" style="display: flex; justify-content: center; gap: 10px;">
+        <div style="display: flex; flex-flow: column;">
+          <label for="data">Data:</label>
+          <input class="input-registro" type="date" id="data" name="data" required >
+        </div>
 
-    <!-- Container com display flex para alinhar os inputs lado a lado -->
-    <div class="time" style="display: flex; justify-content: center; gap: 10px;">
-      <div style="display: flex; flex-flow: column;">
-        <label for="data">Data:</label>
-        <input class="input-registro" type="date" id="data" name="data" required >
+        <div style="display: flex; flex-flow: column;">
+          <label for="hora">Hora:</label>
+          <input class="input-registro" type="time" id="hora" name="hora" required>
+        </div>
       </div>
-
-      <div style="display: flex; flex-flow: column;">
-        <label for="hora">Hora:</label>
-        <input class="input-registro" type="time" id="hora" name="hora" required>
-      </div>
-    </div>
+    {% else %}
+      <!-- Usuário comum: campos ocultos, data/hora atual preenchidos automaticamente -->
+      <input type="hidden" id="data" name="data">
+      <input type="hidden" id="hora" name="hora">
+    {% endif %}
 
     <div class="cpf" >
       <label   for="cpf" style=" display: block;">Digite seu CPF (somente números):</label>

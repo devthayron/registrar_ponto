@@ -1,0 +1,60 @@
+{
+  "lideres": [],
+  "colaboradores": [
+    {
+      "model": "ponto.colaborador",
+      "pk": 1,
+      "fields": {
+        "cpf": "01219667390",
+        "nome": "Adriano Rocha",
+        "lider": null,
+        "is_active": false
+      }
+    },
+    {
+      "model": "ponto.colaborador",
+      "pk": 2,
+      "fields": {
+        "cpf": "04699516300",
+        "nome": "Maria Laiane",
+        "lider": null,
+        "is_active": true
+      }
+    }
+  ],
+  "registros": [
+    {
+      "model": "ponto.registroponto",
+      "pk": 1,
+      "fields": {
+        "colaborador": 2,
+        "data": "2025-08-31",
+        "entrada": "2025-08-31T15:47:00Z",
+        "saida": null,
+        "lider_nome": ""
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 2,
+      "fields": {
+        "colaborador": 2,
+        "data": "2025-08-01",
+        "entrada": "2025-08-01T15:47:00Z",
+        "saida": null,
+        "lider_nome": ""
+      }
+    },
+    {
+      "model": "ponto.registroponto",
+      "pk": 3,
+      "fields": {
+        "colaborador": 2,
+        "data": "2025-08-30",
+        "entrada": "2025-08-30T10:48:00Z",
+        "saida": null,
+        "lider_nome": ""
+      }
+    }
+  ]
+}

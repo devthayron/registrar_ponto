@@ -1,0 +1,28 @@
+{
+  "lideres": [],
+  "colaboradores": [
+    {
+      "model": "ponto.colaborador",
+      "pk": 1,
+      "fields": {
+        "cpf": "09032228331",
+        "nome": "Francisco Araujo",
+        "lider": null,
+        "is_active": false
+      }
+    }
+  ],
+  "registros": [
+    {
+      "model": "ponto.registroponto",
+      "pk": 1,
+      "fields": {
+        "colaborador": 1,
+        "data": "2025-08-15",
+        "entrada": "2025-08-15T14:01:21.920Z",
+        "saida": null,
+        "lider_nome": ""
+      }
+    }
+  ]
+}

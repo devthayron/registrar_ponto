@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+
+
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
   background-color: #ffff;
@@ -26,6 +28,12 @@ h3 img {
   vertical-align: middle;
   margin-left: 8px;
   cursor: pointer;
+}
+
+.time {
+  display: flex;
+  
+  
 }
 
 /* Login */
@@ -135,6 +143,8 @@ h3 img {
   margin-bottom: 1.5rem;
 }
 
+
+
 .ponto-form {
   display: flex;
   flex-direction: column;
@@ -183,6 +193,18 @@ h3 img {
 .mensagem.erro {
   color: #c62828;
 }
+
+.input-registro{
+  width: 163px;
+}
+
+.cpf{
+
+    & .cpf-input{
+    width: 333px;
+  }
+}
+
 
 /* Gerente */
 .gerente-container {
@@ -480,6 +502,7 @@ form {
   gap: 8px;
   margin-top: 2rem;
   flex-wrap: wrap;
+  z-index: 1;
 }
 
 .paginacao a.page-link,
@@ -804,3 +827,4 @@ label {
   color: rgb(255, 187, 0);
   text-decoration: underline;
 }
+

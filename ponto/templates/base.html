@@ -38,7 +38,7 @@
             src="https://img.freepik.com/vetores-gratis/circulo-azul-com-usuario-branco_78370-4707.jpg"
             alt="icone"
           />
-          <span>Bem-vindo, {{ request.user }}!</span>
+          <span>Bem-vindo, {{ request.user|capfirst }}!</span>
         </div>
 
         <h1>Sistema de Registro de Pontos</h1>

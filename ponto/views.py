@@ -13,22 +13,19 @@ from openpyxl import Workbook
 from datetime import timedelta,date
 from django.utils.timezone import localdate
 from django.http import JsonResponse
-from openpyxl import Workbook
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.http import require_http_methods
 from django.core.serializers import serialize, deserialize
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from django.shortcuts import render
-from django.contrib import messages
 import json
-from django.shortcuts import render
 from .models import Colaborador, Lider, RegistroPonto
 import qrcode
 import io
 import base64
 from django.shortcuts import render
 from django.http import HttpResponseBadRequest
+from datetime import datetime, timedelta
 
 
 # ------------------  Usuário  ------------------
@@ -253,7 +250,6 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-
 # ------------------ Registro ------------------
 @login_required
 def registrar_ponto(request):
@@ -270,28 +266,39 @@ def registrar_ponto(request):
             messages.error(request, 'CPF não cadastrado no sistema. Contate o administrador.')
             return redirect('registrar_ponto')
 
-        hoje = timezone.localdate()
-        agora = timezone.now()
+        # ✅ Verifica se o colaborador está inativo
+        if not colaborador.is_active:
+            messages.error(request, 'Colaborador inativo, não permitido registrar.')
+            return redirect('registrar_ponto')
+
+        data_str = request.POST.get('data')
+        hora_str = request.POST.get('hora')
+
+        try:
+            data = datetime.strptime(data_str, '%Y-%m-%d').date()
+            hora = datetime.strptime(hora_str, '%H:%M').time()
+            data_hora = datetime.combine(data, hora)
+            data_hora = timezone.make_aware(data_hora)
+        except (ValueError, TypeError):
+            messages.error(request, 'Data ou hora inválida.')
+            return redirect('registrar_ponto')
 
         try:
             registro, created = RegistroPonto.objects.get_or_create(
                 colaborador=colaborador,
-                data=hoje
+                data=data
             )
 
-            # Se a entrada já foi registrada, não registra novamente
             if registro.entrada:
-                messages.error(request, 'Entrada já registrada para hoje.')
+                messages.error(request, 'Entrada já registrada para esta data.')
                 return redirect('registrar_ponto')
 
-            # Bloqueio por tempo para evitar múltiplos registros rápidos
             intervalo = timedelta(seconds=10)
-            if registro.entrada and (agora - registro.entrada) < intervalo:
+            if registro.entrada and (data_hora - registro.entrada) < intervalo:
                 messages.error(request, 'Leitura ignorada: entrada já registrada recentemente.')
                 return redirect('registrar_ponto')
 
-            # Registrar apenas a entrada
-            registro.entrada = agora
+            registro.entrada = data_hora
             registro.save()
             messages.success(request, 'Entrada registrada com sucesso!')
 
@@ -301,8 +308,6 @@ def registrar_ponto(request):
         return redirect('registrar_ponto')
 
     return render(request, 'ponto/registrar_ponto.html')
-
-
 
 # ------------------  Listagem  ------------------
 @login_required

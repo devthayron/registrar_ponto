@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Registro de Ponto{% endblock %}
 
@@ -7,23 +8,43 @@
 
   <header class="topo">
     <h1>Registro de Ponto</h1>
-    <div class="relogio" id="relogio"></div>
+    <!-- <div class="relogio" id="relogio"></div> -->
   </header>
 
   <form method="post" class="ponto-form" id="pontoForm" autocomplete="off">
     {% csrf_token %}
-    <label for="cpf">Digite seu CPF (somente números)</label>
-    <input type="text"
-           id="cpf"
-           name="cpf"
-           maxlength="14"
-           minlength="14"
-           required
-           pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-           placeholder="000.000.000-00"
-           autofocus />
+    
+    {% if request.user.nivel == 'gerente' %}
+      <!-- Gerente pode escolher data e hora -->
+      <div class="time" style="display: flex; justify-content: center; gap: 10px;">
+        <div style="display: flex; flex-flow: column;">
+          <label for="data">Data:</label>
+          <input class="input-registro" type="date" id="data" name="data" required >
+        </div>
 
-    <!-- <button type="submit">Registrar próximo horário</button> -->
+        <div style="display: flex; flex-flow: column;">
+          <label for="hora">Hora:</label>
+          <input class="input-registro" type="time" id="hora" name="hora" required>
+        </div>
+      </div>
+    {% else %}
+      <!-- Usuário comum: campos ocultos, data/hora atual preenchidos automaticamente -->
+      <input type="hidden" id="data" name="data">
+      <input type="hidden" id="hora" name="hora">
+    {% endif %}
+
+    <div class="cpf" >
+      <label   for="cpf" style=" display: block;">Digite seu CPF (somente números):</label>
+      <input class="cpf-input" type="text"
+             id="cpf"
+             name="cpf"
+             maxlength="14"
+             minlength="14"
+             required
+             pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+             placeholder="000.000.000-00"
+             autofocus />
+    </div>
 
     <div class="mensagem" id="mensagem">
       {% if messages %}
@@ -38,7 +59,6 @@
     </div>
   </form>
 
-  {# Link de navegação opcional #}
   {% comment %}
   <nav>
     <a href="{% url 'listar_pontos' %}">Ver registros</a> |
@@ -48,51 +68,8 @@
 
 </div>
 
-<script>
-  const cpfInput = document.getElementById('cpf');
-  const pontoForm = document.getElementById('pontoForm');
-
-  cpfInput.addEventListener('input', function (e) {
-    let value = e.target.value;
-
-    // Remove tudo que não for número
-    value = value.replace(/\D/g, '');
-
-    // Limita a 11 dígitos
-    value = value.substring(0, 11);
-
-    // Aplica máscara
-    if (value.length > 9) {
-      value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/, '$1.$2.$3-$4');
-    } else if (value.length > 6) {
-      value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, '$1.$2.$3');
-    } else if (value.length > 3) {
-      value = value.replace(/^(\d{3})(\d{0,3}).*/, '$1.$2');
-    }
-
-    e.target.value = value;
-
-    // Envia automaticamente ao completar CPF (com máscara)
-    if (value.length === 14) {
-      pontoForm.submit();
-    }
-  });
-
-  // Oculta mensagens após o tempo determinado
-  window.addEventListener('DOMContentLoaded', function () {
-    const mensagens = document.querySelectorAll('.messages p');
-
-    mensagens.forEach((msg) => {
-      // Verifica se a mensagem é de erro
-      const isErro = msg.classList.contains('erro');
-      const tempo = isErro ? 3000 : 1000;  // 3 segundos para erro, 1 segundo para sucesso
-
-      // Esconde a mensagem após o tempo definido
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, tempo);
-    });
-  });
-</script>
+<script src="{% static 'js/cpf.js' %}"></script>
+<script src="{% static 'js/envio.js' %}"></script>
+<script src="{% static 'js/data.js' %}" ></script>
 
 {% endblock %}
